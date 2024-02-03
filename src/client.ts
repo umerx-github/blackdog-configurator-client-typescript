@@ -179,7 +179,7 @@ export class SymbolImpl implements Symbol {
         query: SymbolTypes.SymbolGetManyRequestQuery
     ): Promise<SymbolTypes.SymbolGetManyResponseBody> {
         const response = await axios.get<SymbolTypes.SymbolGetManyResponseBody>(
-            `${this.baseUrl}/${new URLSearchParams(
+            `${this.baseUrl}/?${new URLSearchParams(
                 Object.entries(query)
             ).toString()}`
         );
@@ -250,7 +250,7 @@ export class SymbolImpl implements Symbol {
     ): Promise<SymbolTypes.SymbolDeleteManyResponseBody> {
         const response =
             await axios.delete<SymbolTypes.SymbolDeleteManyResponseBody>(
-                `${this.baseUrl}/${new URLSearchParams(
+                `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
@@ -275,7 +275,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<StrategyTypes.StrategyGetManyResponseBody> {
         const response =
             await axios.get<StrategyTypes.StrategyGetManyResponseBody>(
-                `${this.baseUrl}/${new URLSearchParams(
+                `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
@@ -355,7 +355,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<StrategyTypes.StrategyDeleteManyResponseBody> {
         const response =
             await axios.delete<StrategyTypes.StrategyDeleteManyResponseBody>(
-                `${this.baseUrl}/${new URLSearchParams(
+                `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
@@ -383,7 +383,7 @@ export class OrderImpl implements Order {
         query: OrderTypes.OrderGetManyRequestQuery
     ): Promise<OrderTypes.OrderGetManyResponseBody> {
         const response = await axios.get<OrderTypes.OrderGetManyResponseBody>(
-            `${this.baseUrl}/${new URLSearchParams(
+            `${this.baseUrl}/?${new URLSearchParams(
                 Object.entries(query)
             ).toString()}`
         );
@@ -451,7 +451,7 @@ export class OrderImpl implements Order {
     ): Promise<OrderTypes.OrderDeleteManyResponseBody> {
         const response =
             await axios.delete<OrderTypes.OrderDeleteManyResponseBody>(
-                `${this.baseUrl}/${new URLSearchParams(
+                `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
@@ -476,7 +476,7 @@ export class PositionImpl implements Position {
     ): Promise<PositionTypes.PositionGetManyResponseBody> {
         const response =
             await axios.get<PositionTypes.PositionGetManyResponseBody>(
-                `${this.baseUrl}/${new URLSearchParams(
+                `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
@@ -556,7 +556,7 @@ export class PositionImpl implements Position {
     ): Promise<PositionTypes.PositionDeleteManyResponseBody> {
         const response =
             await axios.delete<PositionTypes.PositionDeleteManyResponseBody>(
-                `${this.baseUrl}/${new URLSearchParams(
+                `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
@@ -587,7 +587,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody> {
         const response =
             await axios.get<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody>(
-                `${this.baseUrl}/${new URLSearchParams(
+                `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
@@ -673,7 +673,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody> {
         const response =
             await axios.delete<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody>(
-                `${this.baseUrl}/${new URLSearchParams(
+                `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
