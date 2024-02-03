@@ -8,6 +8,12 @@ import {
 import { URLSearchParams } from 'url';
 import axios from 'axios';
 
+export class ClientResponseError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'ClientResponseError';
+    }
+}
 export interface Symbol {
     getMany(
         query: SymbolTypes.SymbolGetManyRequestQuery
@@ -183,7 +189,13 @@ export class SymbolImpl implements Symbol {
                 Object.entries(query)
             ).toString()}`
         );
-        return SymbolTypes.SymbolGetManyResponseBodyFromRaw(response.data);
+        const responseData = SymbolTypes.SymbolGetManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async getSingle(
         params: SymbolTypes.SymbolGetSingleRequestParams
@@ -192,7 +204,13 @@ export class SymbolImpl implements Symbol {
             await axios.get<SymbolTypes.SymbolGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        return SymbolTypes.SymbolGetSingleResponseBodyFromRaw(response.data);
+        const responseData = SymbolTypes.SymbolGetSingleResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async postMany(
         body: SymbolTypes.SymbolPostManyRequestBody
@@ -202,7 +220,13 @@ export class SymbolImpl implements Symbol {
                 `${this.baseUrl}`,
                 body
             );
-        return SymbolTypes.SymbolPostManyResponseBodyFromRaw(response.data);
+        const responseData = SymbolTypes.SymbolPostManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async putMany(
         body: SymbolTypes.SymbolPostManyRequestBody
@@ -211,7 +235,13 @@ export class SymbolImpl implements Symbol {
             `${this.baseUrl}`,
             body
         );
-        return SymbolTypes.SymbolPutManyResponseBodyFromRaw(response.data);
+        const responseData = SymbolTypes.SymbolPutManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async putSingle(
         params: SymbolTypes.SymbolPutSingleRequestParams,
@@ -222,7 +252,13 @@ export class SymbolImpl implements Symbol {
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        return SymbolTypes.SymbolPutSingleResponseBodyFromRaw(response.data);
+        const responseData = SymbolTypes.SymbolPutSingleResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async patchMany(
         body: SymbolTypes.SymbolPatchManyRequestBody
@@ -232,7 +268,13 @@ export class SymbolImpl implements Symbol {
                 `${this.baseUrl}`,
                 body
             );
-        return SymbolTypes.SymbolPatchManyResponseBodyFromRaw(response.data);
+        const responseData = SymbolTypes.SymbolPatchManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async patchSingle(
         params: SymbolTypes.SymbolPatchSingleRequestParams,
@@ -243,7 +285,13 @@ export class SymbolImpl implements Symbol {
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        return SymbolTypes.SymbolPatchSingleResponseBodyFromRaw(response.data);
+        const responseData = SymbolTypes.SymbolPatchSingleResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async deleteMany(
         query: SymbolTypes.SymbolDeleteManyRequestQuery
@@ -254,7 +302,13 @@ export class SymbolImpl implements Symbol {
                     Object.entries(query)
                 ).toString()}`
             );
-        return SymbolTypes.SymbolDeleteManyResponseBodyFromRaw(response.data);
+        const responseData = SymbolTypes.SymbolDeleteManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async deleteSingle(
         params: SymbolTypes.SymbolDeleteSingleRequestParams
@@ -263,7 +317,13 @@ export class SymbolImpl implements Symbol {
             await axios.delete<SymbolTypes.SymbolDeleteSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        return SymbolTypes.SymbolDeleteSingleResponseBodyFromRaw(response.data);
+        const responseData = SymbolTypes.SymbolDeleteSingleResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
 }
 
@@ -279,7 +339,13 @@ export class StrategyImpl implements Strategy {
                     Object.entries(query)
                 ).toString()}`
             );
-        return StrategyTypes.StrategyGetManyResponseBodyFromRaw(response.data);
+        const responseData = StrategyTypes.StrategyGetManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async getSingle(
         params: StrategyTypes.StrategyGetSingleRequestParams
@@ -288,9 +354,13 @@ export class StrategyImpl implements Strategy {
             await axios.get<StrategyTypes.StrategyGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        return StrategyTypes.StrategyGetSingleResponseBodyFromRaw(
+        const responseData = StrategyTypes.StrategyGetSingleResponseBodyFromRaw(
             response.data
         );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async postMany(
         body: StrategyTypes.StrategyPostManyRequestBody
@@ -300,7 +370,13 @@ export class StrategyImpl implements Strategy {
                 `${this.baseUrl}`,
                 body
             );
-        return StrategyTypes.StrategyPostManyResponseBodyFromRaw(response.data);
+        const responseData = StrategyTypes.StrategyPostManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async putMany(
         body: StrategyTypes.StrategyPostManyRequestBody
@@ -310,7 +386,13 @@ export class StrategyImpl implements Strategy {
                 `${this.baseUrl}`,
                 body
             );
-        return StrategyTypes.StrategyPutManyResponseBodyFromRaw(response.data);
+        const responseData = StrategyTypes.StrategyPutManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async putSingle(
         params: StrategyTypes.StrategyPutSingleRequestParams,
@@ -321,9 +403,13 @@ export class StrategyImpl implements Strategy {
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        return StrategyTypes.StrategyPutSingleResponseBodyFromRaw(
+        const responseData = StrategyTypes.StrategyPutSingleResponseBodyFromRaw(
             response.data
         );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async patchMany(
         body: StrategyTypes.StrategyPatchManyRequestBody
@@ -333,9 +419,13 @@ export class StrategyImpl implements Strategy {
                 `${this.baseUrl}`,
                 body
             );
-        return StrategyTypes.StrategyPatchManyResponseBodyFromRaw(
+        const responseData = StrategyTypes.StrategyPatchManyResponseBodyFromRaw(
             response.data
         );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async patchSingle(
         params: StrategyTypes.StrategyPatchSingleRequestParams,
@@ -346,9 +436,12 @@ export class StrategyImpl implements Strategy {
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        return StrategyTypes.StrategyPatchSingleResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTypes.StrategyPatchSingleResponseBodyFromRaw(response.data);
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async deleteMany(
         query: StrategyTypes.StrategyDeleteManyRequestQuery
@@ -359,9 +452,12 @@ export class StrategyImpl implements Strategy {
                     Object.entries(query)
                 ).toString()}`
             );
-        return StrategyTypes.StrategyDeleteManyResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTypes.StrategyDeleteManyResponseBodyFromRaw(response.data);
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async deleteSingle(
         params: StrategyTypes.StrategyDeleteSingleRequestParams
@@ -370,9 +466,14 @@ export class StrategyImpl implements Strategy {
             await axios.delete<StrategyTypes.StrategyDeleteSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        return StrategyTypes.StrategyDeleteSingleResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTypes.StrategyDeleteSingleResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
 }
 
@@ -387,7 +488,13 @@ export class OrderImpl implements Order {
                 Object.entries(query)
             ).toString()}`
         );
-        return OrderTypes.OrderGetManyResponseBodyFromRaw(response.data);
+        const responseData = OrderTypes.OrderGetManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async getSingle(
         params: OrderTypes.OrderGetSingleRequestParams
@@ -395,7 +502,13 @@ export class OrderImpl implements Order {
         const response = await axios.get<OrderTypes.OrderGetSingleResponseBody>(
             `${this.baseUrl}/${params.id}`
         );
-        return OrderTypes.OrderGetSingleResponseBodyFromRaw(response.data);
+        const responseData = OrderTypes.OrderGetSingleResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async postMany(
         body: OrderTypes.OrderPostManyRequestBody
@@ -404,7 +517,13 @@ export class OrderImpl implements Order {
             `${this.baseUrl}`,
             body
         );
-        return OrderTypes.OrderPostManyResponseBodyFromRaw(response.data);
+        const responseData = OrderTypes.OrderPostManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async putMany(
         body: OrderTypes.OrderPostManyRequestBody
@@ -413,7 +532,13 @@ export class OrderImpl implements Order {
             `${this.baseUrl}`,
             body
         );
-        return OrderTypes.OrderPutManyResponseBodyFromRaw(response.data);
+        const responseData = OrderTypes.OrderPutManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async putSingle(
         params: OrderTypes.OrderPutSingleRequestParams,
@@ -423,7 +548,13 @@ export class OrderImpl implements Order {
             `${this.baseUrl}/${params.id}`,
             body
         );
-        return OrderTypes.OrderPutSingleResponseBodyFromRaw(response.data);
+        const responseData = OrderTypes.OrderPutSingleResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async patchMany(
         body: OrderTypes.OrderPatchManyRequestBody
@@ -433,7 +564,13 @@ export class OrderImpl implements Order {
                 `${this.baseUrl}`,
                 body
             );
-        return OrderTypes.OrderPatchManyResponseBodyFromRaw(response.data);
+        const responseData = OrderTypes.OrderPatchManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async patchSingle(
         params: OrderTypes.OrderPatchSingleRequestParams,
@@ -444,7 +581,13 @@ export class OrderImpl implements Order {
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        return OrderTypes.OrderPatchSingleResponseBodyFromRaw(response.data);
+        const responseData = OrderTypes.OrderPatchSingleResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async deleteMany(
         query: OrderTypes.OrderDeleteManyRequestQuery
@@ -455,7 +598,13 @@ export class OrderImpl implements Order {
                     Object.entries(query)
                 ).toString()}`
             );
-        return OrderTypes.OrderDeleteManyResponseBodyFromRaw(response.data);
+        const responseData = OrderTypes.OrderDeleteManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async deleteSingle(
         params: OrderTypes.OrderDeleteSingleRequestParams
@@ -464,7 +613,13 @@ export class OrderImpl implements Order {
             await axios.delete<OrderTypes.OrderDeleteSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        return OrderTypes.OrderDeleteSingleResponseBodyFromRaw(response.data);
+        const responseData = OrderTypes.OrderDeleteSingleResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
 }
 
@@ -480,7 +635,13 @@ export class PositionImpl implements Position {
                     Object.entries(query)
                 ).toString()}`
             );
-        return PositionTypes.PositionGetManyResponseBodyFromRaw(response.data);
+        const responseData = PositionTypes.PositionGetManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async getSingle(
         params: PositionTypes.PositionGetSingleRequestParams
@@ -489,9 +650,13 @@ export class PositionImpl implements Position {
             await axios.get<PositionTypes.PositionGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        return PositionTypes.PositionGetSingleResponseBodyFromRaw(
+        const responseData = PositionTypes.PositionGetSingleResponseBodyFromRaw(
             response.data
         );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async postMany(
         body: PositionTypes.PositionPostManyRequestBody
@@ -501,7 +666,13 @@ export class PositionImpl implements Position {
                 `${this.baseUrl}`,
                 body
             );
-        return PositionTypes.PositionPostManyResponseBodyFromRaw(response.data);
+        const responseData = PositionTypes.PositionPostManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async putMany(
         body: PositionTypes.PositionPostManyRequestBody
@@ -511,7 +682,13 @@ export class PositionImpl implements Position {
                 `${this.baseUrl}`,
                 body
             );
-        return PositionTypes.PositionPutManyResponseBodyFromRaw(response.data);
+        const responseData = PositionTypes.PositionPutManyResponseBodyFromRaw(
+            response.data
+        );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async putSingle(
         params: PositionTypes.PositionPutSingleRequestParams,
@@ -522,9 +699,13 @@ export class PositionImpl implements Position {
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        return PositionTypes.PositionPutSingleResponseBodyFromRaw(
+        const responseData = PositionTypes.PositionPutSingleResponseBodyFromRaw(
             response.data
         );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async patchMany(
         body: PositionTypes.PositionPatchManyRequestBody
@@ -534,9 +715,13 @@ export class PositionImpl implements Position {
                 `${this.baseUrl}`,
                 body
             );
-        return PositionTypes.PositionPatchManyResponseBodyFromRaw(
+        const responseData = PositionTypes.PositionPatchManyResponseBodyFromRaw(
             response.data
         );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async patchSingle(
         params: PositionTypes.PositionPatchSingleRequestParams,
@@ -547,9 +732,12 @@ export class PositionImpl implements Position {
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        return PositionTypes.PositionPatchSingleResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            PositionTypes.PositionPatchSingleResponseBodyFromRaw(response.data);
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async deleteMany(
         query: PositionTypes.PositionDeleteManyRequestQuery
@@ -560,9 +748,12 @@ export class PositionImpl implements Position {
                     Object.entries(query)
                 ).toString()}`
             );
-        return PositionTypes.PositionDeleteManyResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            PositionTypes.PositionDeleteManyResponseBodyFromRaw(response.data);
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async deleteSingle(
         params: PositionTypes.PositionDeleteSingleRequestParams
@@ -571,9 +762,14 @@ export class PositionImpl implements Position {
             await axios.delete<PositionTypes.PositionDeleteSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        return PositionTypes.PositionDeleteSingleResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            PositionTypes.PositionDeleteSingleResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
 }
 
@@ -591,9 +787,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                     Object.entries(query)
                 ).toString()}`
             );
-        return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async getSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleRequestParams
@@ -602,9 +803,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
             await axios.get<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async postMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
@@ -614,9 +820,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 `${this.baseUrl}`,
                 body
             );
-        return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async putMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
@@ -626,9 +837,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 `${this.baseUrl}`,
                 body
             );
-        return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async putSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleRequestParams,
@@ -639,9 +855,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async patchMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyRequestBody
@@ -651,9 +872,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 `${this.baseUrl}`,
                 body
             );
-        return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async patchSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleRequestParams,
@@ -664,9 +890,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async deleteMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyRequestQuery
@@ -677,9 +908,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                     Object.entries(query)
                 ).toString()}`
             );
-        return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
     async deleteSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleRequestParams
@@ -688,9 +924,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
             await axios.delete<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBodyFromRaw(
-            response.data
-        );
+        const responseData =
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData;
     }
 }
 
