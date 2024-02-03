@@ -711,7 +711,7 @@ export class ClientImpl implements Client {
     }
     strategyTemplateSeaDogDiscountScheme(): StrategyTemplateSeaDogDiscountScheme {
         return new StrategyTemplateSeaDogDiscountSchemeImpl(
-            `${this.baseUrl}/strategyTemplateSeaDogDiscountScheme`
+            `${this.baseUrl}/strategyTemplate/seaDogDiscountScheme`
         );
     }
 }
