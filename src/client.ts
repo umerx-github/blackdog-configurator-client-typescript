@@ -173,17 +173,13 @@ export interface Client {
 }
 
 export class SymbolImpl implements Symbol {
-    constructor(
-        private readonly scheme: string,
-        private readonly host: string,
-        private readonly baseUrl: string
-    ) {}
+    constructor(public readonly baseUrl: string) {}
 
     async getMany(
         query: SymbolTypes.SymbolGetManyRequestQuery
     ): Promise<SymbolTypes.SymbolGetManyResponseBody> {
         const response = await axios.get<SymbolTypes.SymbolGetManyResponseBody>(
-            `${this.scheme}://${this.host}${this.baseUrl}/${new URLSearchParams(
+            `${this.baseUrl}/${new URLSearchParams(
                 Object.entries(query)
             ).toString()}`
         );
@@ -194,7 +190,7 @@ export class SymbolImpl implements Symbol {
     ): Promise<SymbolTypes.SymbolGetSingleResponseBody> {
         const response =
             await axios.get<SymbolTypes.SymbolGetSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`
+                `${this.baseUrl}/${params.id}`
             );
         return SymbolTypes.SymbolGetSingleResponseBodyFromRaw(response.data);
     }
@@ -203,7 +199,7 @@ export class SymbolImpl implements Symbol {
     ): Promise<SymbolTypes.SymbolPostManyResponseBody> {
         const response =
             await axios.post<SymbolTypes.SymbolPostManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return SymbolTypes.SymbolPostManyResponseBodyFromRaw(response.data);
@@ -212,7 +208,7 @@ export class SymbolImpl implements Symbol {
         body: SymbolTypes.SymbolPostManyRequestBody
     ): Promise<SymbolTypes.SymbolPutManyResponseBody> {
         const response = await axios.put<SymbolTypes.SymbolPutManyResponseBody>(
-            `${this.scheme}://${this.host}${this.baseUrl}`,
+            `${this.baseUrl}`,
             body
         );
         return SymbolTypes.SymbolPutManyResponseBodyFromRaw(response.data);
@@ -223,7 +219,7 @@ export class SymbolImpl implements Symbol {
     ): Promise<SymbolTypes.SymbolPutSingleResponseBody> {
         const response =
             await axios.put<SymbolTypes.SymbolPutSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`,
+                `${this.baseUrl}/${params.id}`,
                 body
             );
         return SymbolTypes.SymbolPutSingleResponseBodyFromRaw(response.data);
@@ -233,7 +229,7 @@ export class SymbolImpl implements Symbol {
     ): Promise<SymbolTypes.SymbolPatchManyResponseBody> {
         const response =
             await axios.patch<SymbolTypes.SymbolPatchManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return SymbolTypes.SymbolPatchManyResponseBodyFromRaw(response.data);
@@ -244,7 +240,7 @@ export class SymbolImpl implements Symbol {
     ): Promise<SymbolTypes.SymbolPatchSingleResponseBody> {
         const response =
             await axios.patch<SymbolTypes.SymbolPatchSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`,
+                `${this.baseUrl}/${params.id}`,
                 body
             );
         return SymbolTypes.SymbolPatchSingleResponseBodyFromRaw(response.data);
@@ -254,9 +250,9 @@ export class SymbolImpl implements Symbol {
     ): Promise<SymbolTypes.SymbolDeleteManyResponseBody> {
         const response =
             await axios.delete<SymbolTypes.SymbolDeleteManyResponseBody>(
-                `${this.scheme}://${this.host}${
-                    this.baseUrl
-                }/${new URLSearchParams(Object.entries(query)).toString()}`
+                `${this.baseUrl}/${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
             );
         return SymbolTypes.SymbolDeleteManyResponseBodyFromRaw(response.data);
     }
@@ -265,27 +261,23 @@ export class SymbolImpl implements Symbol {
     ): Promise<SymbolTypes.SymbolDeleteSingleResponseBody> {
         const response =
             await axios.delete<SymbolTypes.SymbolDeleteSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`
+                `${this.baseUrl}/${params.id}`
             );
         return SymbolTypes.SymbolDeleteSingleResponseBodyFromRaw(response.data);
     }
 }
 
 export class StrategyImpl implements Strategy {
-    constructor(
-        private readonly scheme: string,
-        private readonly host: string,
-        private readonly baseUrl: string
-    ) {}
+    constructor(public readonly baseUrl: string) {}
 
     async getMany(
         query: StrategyTypes.StrategyGetManyRequestQuery
     ): Promise<StrategyTypes.StrategyGetManyResponseBody> {
         const response =
             await axios.get<StrategyTypes.StrategyGetManyResponseBody>(
-                `${this.scheme}://${this.host}${
-                    this.baseUrl
-                }/${new URLSearchParams(Object.entries(query)).toString()}`
+                `${this.baseUrl}/${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
             );
         return StrategyTypes.StrategyGetManyResponseBodyFromRaw(response.data);
     }
@@ -294,7 +286,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<StrategyTypes.StrategyGetSingleResponseBody> {
         const response =
             await axios.get<StrategyTypes.StrategyGetSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`
+                `${this.baseUrl}/${params.id}`
             );
         return StrategyTypes.StrategyGetSingleResponseBodyFromRaw(
             response.data
@@ -305,7 +297,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<StrategyTypes.StrategyPostManyResponseBody> {
         const response =
             await axios.post<StrategyTypes.StrategyPostManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return StrategyTypes.StrategyPostManyResponseBodyFromRaw(response.data);
@@ -315,7 +307,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<StrategyTypes.StrategyPutManyResponseBody> {
         const response =
             await axios.put<StrategyTypes.StrategyPutManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return StrategyTypes.StrategyPutManyResponseBodyFromRaw(response.data);
@@ -326,7 +318,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<StrategyTypes.StrategyPutSingleResponseBody> {
         const response =
             await axios.put<StrategyTypes.StrategyPutSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`,
+                `${this.baseUrl}/${params.id}`,
                 body
             );
         return StrategyTypes.StrategyPutSingleResponseBodyFromRaw(
@@ -338,7 +330,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<StrategyTypes.StrategyPatchManyResponseBody> {
         const response =
             await axios.patch<StrategyTypes.StrategyPatchManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return StrategyTypes.StrategyPatchManyResponseBodyFromRaw(
@@ -351,7 +343,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<StrategyTypes.StrategyPatchSingleResponseBody> {
         const response =
             await axios.patch<StrategyTypes.StrategyPatchSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`,
+                `${this.baseUrl}/${params.id}`,
                 body
             );
         return StrategyTypes.StrategyPatchSingleResponseBodyFromRaw(
@@ -363,9 +355,9 @@ export class StrategyImpl implements Strategy {
     ): Promise<StrategyTypes.StrategyDeleteManyResponseBody> {
         const response =
             await axios.delete<StrategyTypes.StrategyDeleteManyResponseBody>(
-                `${this.scheme}://${this.host}${
-                    this.baseUrl
-                }/${new URLSearchParams(Object.entries(query)).toString()}`
+                `${this.baseUrl}/${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
             );
         return StrategyTypes.StrategyDeleteManyResponseBodyFromRaw(
             response.data
@@ -376,7 +368,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<StrategyTypes.StrategyDeleteSingleResponseBody> {
         const response =
             await axios.delete<StrategyTypes.StrategyDeleteSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`
+                `${this.baseUrl}/${params.id}`
             );
         return StrategyTypes.StrategyDeleteSingleResponseBodyFromRaw(
             response.data
@@ -385,17 +377,13 @@ export class StrategyImpl implements Strategy {
 }
 
 export class OrderImpl implements Order {
-    constructor(
-        private readonly scheme: string,
-        private readonly host: string,
-        private readonly baseUrl: string
-    ) {}
+    constructor(public readonly baseUrl: string) {}
 
     async getMany(
         query: OrderTypes.OrderGetManyRequestQuery
     ): Promise<OrderTypes.OrderGetManyResponseBody> {
         const response = await axios.get<OrderTypes.OrderGetManyResponseBody>(
-            `${this.scheme}://${this.host}${this.baseUrl}/${new URLSearchParams(
+            `${this.baseUrl}/${new URLSearchParams(
                 Object.entries(query)
             ).toString()}`
         );
@@ -405,7 +393,7 @@ export class OrderImpl implements Order {
         params: OrderTypes.OrderGetSingleRequestParams
     ): Promise<OrderTypes.OrderGetSingleResponseBody> {
         const response = await axios.get<OrderTypes.OrderGetSingleResponseBody>(
-            `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`
+            `${this.baseUrl}/${params.id}`
         );
         return OrderTypes.OrderGetSingleResponseBodyFromRaw(response.data);
     }
@@ -413,7 +401,7 @@ export class OrderImpl implements Order {
         body: OrderTypes.OrderPostManyRequestBody
     ): Promise<OrderTypes.OrderPostManyResponseBody> {
         const response = await axios.post<OrderTypes.OrderPostManyResponseBody>(
-            `${this.scheme}://${this.host}${this.baseUrl}`,
+            `${this.baseUrl}`,
             body
         );
         return OrderTypes.OrderPostManyResponseBodyFromRaw(response.data);
@@ -422,7 +410,7 @@ export class OrderImpl implements Order {
         body: OrderTypes.OrderPostManyRequestBody
     ): Promise<OrderTypes.OrderPutManyResponseBody> {
         const response = await axios.put<OrderTypes.OrderPutManyResponseBody>(
-            `${this.scheme}://${this.host}${this.baseUrl}`,
+            `${this.baseUrl}`,
             body
         );
         return OrderTypes.OrderPutManyResponseBodyFromRaw(response.data);
@@ -432,7 +420,7 @@ export class OrderImpl implements Order {
         body: OrderTypes.OrderPutSingleRequestBody
     ): Promise<OrderTypes.OrderPutSingleResponseBody> {
         const response = await axios.put<OrderTypes.OrderPutSingleResponseBody>(
-            `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`,
+            `${this.baseUrl}/${params.id}`,
             body
         );
         return OrderTypes.OrderPutSingleResponseBodyFromRaw(response.data);
@@ -442,7 +430,7 @@ export class OrderImpl implements Order {
     ): Promise<OrderTypes.OrderPatchManyResponseBody> {
         const response =
             await axios.patch<OrderTypes.OrderPatchManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return OrderTypes.OrderPatchManyResponseBodyFromRaw(response.data);
@@ -453,7 +441,7 @@ export class OrderImpl implements Order {
     ): Promise<OrderTypes.OrderPatchSingleResponseBody> {
         const response =
             await axios.patch<OrderTypes.OrderPatchSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`,
+                `${this.baseUrl}/${params.id}`,
                 body
             );
         return OrderTypes.OrderPatchSingleResponseBodyFromRaw(response.data);
@@ -463,9 +451,9 @@ export class OrderImpl implements Order {
     ): Promise<OrderTypes.OrderDeleteManyResponseBody> {
         const response =
             await axios.delete<OrderTypes.OrderDeleteManyResponseBody>(
-                `${this.scheme}://${this.host}${
-                    this.baseUrl
-                }/${new URLSearchParams(Object.entries(query)).toString()}`
+                `${this.baseUrl}/${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
             );
         return OrderTypes.OrderDeleteManyResponseBodyFromRaw(response.data);
     }
@@ -474,27 +462,23 @@ export class OrderImpl implements Order {
     ): Promise<OrderTypes.OrderDeleteSingleResponseBody> {
         const response =
             await axios.delete<OrderTypes.OrderDeleteSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`
+                `${this.baseUrl}/${params.id}`
             );
         return OrderTypes.OrderDeleteSingleResponseBodyFromRaw(response.data);
     }
 }
 
 export class PositionImpl implements Position {
-    constructor(
-        private readonly scheme: string,
-        private readonly host: string,
-        private readonly baseUrl: string
-    ) {}
+    constructor(public readonly baseUrl: string) {}
 
     async getMany(
         query: PositionTypes.PositionGetManyRequestQuery
     ): Promise<PositionTypes.PositionGetManyResponseBody> {
         const response =
             await axios.get<PositionTypes.PositionGetManyResponseBody>(
-                `${this.scheme}://${this.host}${
-                    this.baseUrl
-                }/${new URLSearchParams(Object.entries(query)).toString()}`
+                `${this.baseUrl}/${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
             );
         return PositionTypes.PositionGetManyResponseBodyFromRaw(response.data);
     }
@@ -503,7 +487,7 @@ export class PositionImpl implements Position {
     ): Promise<PositionTypes.PositionGetSingleResponseBody> {
         const response =
             await axios.get<PositionTypes.PositionGetSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`
+                `${this.baseUrl}/${params.id}`
             );
         return PositionTypes.PositionGetSingleResponseBodyFromRaw(
             response.data
@@ -514,7 +498,7 @@ export class PositionImpl implements Position {
     ): Promise<PositionTypes.PositionPostManyResponseBody> {
         const response =
             await axios.post<PositionTypes.PositionPostManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return PositionTypes.PositionPostManyResponseBodyFromRaw(response.data);
@@ -524,7 +508,7 @@ export class PositionImpl implements Position {
     ): Promise<PositionTypes.PositionPutManyResponseBody> {
         const response =
             await axios.put<PositionTypes.PositionPutManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return PositionTypes.PositionPutManyResponseBodyFromRaw(response.data);
@@ -535,7 +519,7 @@ export class PositionImpl implements Position {
     ): Promise<PositionTypes.PositionPutSingleResponseBody> {
         const response =
             await axios.put<PositionTypes.PositionPutSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`,
+                `${this.baseUrl}/${params.id}`,
                 body
             );
         return PositionTypes.PositionPutSingleResponseBodyFromRaw(
@@ -547,10 +531,10 @@ export class PositionImpl implements Position {
     ): Promise<PositionTypes.PositionPatchManyResponseBody> {
         const response =
             await axios.patch<PositionTypes.PositionPatchManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
-        return PositionTypes.PositionPatchManyResponseBody.FromRaw(
+        return PositionTypes.PositionPatchManyResponseBodyFromRaw(
             response.data
         );
     }
@@ -560,7 +544,7 @@ export class PositionImpl implements Position {
     ): Promise<PositionTypes.PositionPatchSingleResponseBody> {
         const response =
             await axios.patch<PositionTypes.PositionPatchSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`,
+                `${this.baseUrl}/${params.id}`,
                 body
             );
         return PositionTypes.PositionPatchSingleResponseBodyFromRaw(
@@ -572,9 +556,9 @@ export class PositionImpl implements Position {
     ): Promise<PositionTypes.PositionDeleteManyResponseBody> {
         const response =
             await axios.delete<PositionTypes.PositionDeleteManyResponseBody>(
-                `${this.scheme}://${this.host}${
-                    this.baseUrl
-                }/${new URLSearchParams(Object.entries(query)).toString()}`
+                `${this.baseUrl}/${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
             );
         return PositionTypes.PositionDeleteManyResponseBodyFromRaw(
             response.data
@@ -585,7 +569,7 @@ export class PositionImpl implements Position {
     ): Promise<PositionTypes.PositionDeleteSingleResponseBody> {
         const response =
             await axios.delete<PositionTypes.PositionDeleteSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`
+                `${this.baseUrl}/${params.id}`
             );
         return PositionTypes.PositionDeleteSingleResponseBodyFromRaw(
             response.data
@@ -596,20 +580,16 @@ export class PositionImpl implements Position {
 export class StrategyTemplateSeaDogDiscountSchemeImpl
     implements StrategyTemplateSeaDogDiscountScheme
 {
-    constructor(
-        private readonly scheme: string,
-        private readonly host: string,
-        private readonly baseUrl: string
-    ) {}
+    constructor(public readonly baseUrl: string) {}
 
     async getMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyRequestQuery
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody> {
         const response =
             await axios.get<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody>(
-                `${this.scheme}://${this.host}${
-                    this.baseUrl
-                }/${new URLSearchParams(Object.entries(query)).toString()}`
+                `${this.baseUrl}/${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
             );
         return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBodyFromRaw(
             response.data
@@ -620,7 +600,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBody> {
         const response =
             await axios.get<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`
+                `${this.baseUrl}/${params.id}`
             );
         return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBodyFromRaw(
             response.data
@@ -631,7 +611,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBody> {
         const response =
             await axios.post<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBodyFromRaw(
@@ -643,7 +623,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBody> {
         const response =
             await axios.put<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBodyFromRaw(
@@ -656,7 +636,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBody> {
         const response =
             await axios.put<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`,
+                `${this.baseUrl}/${params.id}`,
                 body
             );
         return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBodyFromRaw(
@@ -668,7 +648,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBody> {
         const response =
             await axios.patch<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}`,
+                `${this.baseUrl}`,
                 body
             );
         return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBodyFromRaw(
@@ -681,7 +661,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBody> {
         const response =
             await axios.patch<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`,
+                `${this.baseUrl}/${params.id}`,
                 body
             );
         return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBodyFromRaw(
@@ -693,9 +673,9 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody> {
         const response =
             await axios.delete<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody>(
-                `${this.scheme}://${this.host}${
-                    this.baseUrl
-                }/${new URLSearchParams(Object.entries(query)).toString()}`
+                `${this.baseUrl}/${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
             );
         return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBodyFromRaw(
             response.data
@@ -706,7 +686,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBody> {
         const response =
             await axios.delete<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBody>(
-                `${this.scheme}://${this.host}${this.baseUrl}/${params.id}`
+                `${this.baseUrl}/${params.id}`
             );
         return StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBodyFromRaw(
             response.data
@@ -715,29 +695,23 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
 }
 
 export class ClientImpl implements Client {
-    constructor(
-        private readonly scheme: string,
-        private readonly host: string,
-        private readonly baseUrl: string
-    ) {}
+    constructor(public readonly baseUrl: string) {}
 
     symbol(): Symbol {
-        return new SymbolImpl(this.scheme, this.host, this.baseUrl);
+        return new SymbolImpl(`${this.baseUrl}/symbol`);
     }
     strategy(): Strategy {
-        return new StrategyImpl(this.scheme, this.host, this.baseUrl);
+        return new StrategyImpl(`${this.baseUrl}/strategy`);
     }
     order(): Order {
-        return new OrderImpl(this.scheme, this.host, this.baseUrl);
+        return new OrderImpl(`${this.baseUrl}/order`);
     }
     position(): Position {
-        return new PositionImpl(this.scheme, this.host, this.baseUrl);
+        return new PositionImpl(`${this.baseUrl}/position`);
     }
     strategyTemplateSeaDogDiscountScheme(): StrategyTemplateSeaDogDiscountScheme {
         return new StrategyTemplateSeaDogDiscountSchemeImpl(
-            this.scheme,
-            this.host,
-            this.baseUrl
+            `${this.baseUrl}/strategyTemplateSeaDogDiscountScheme`
         );
     }
 }

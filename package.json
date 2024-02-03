@@ -10,12 +10,12 @@
     ],
     "scripts": {
         "build": "npx tsc",
-        "build:watch": "npx tsc -w"
+        "build:watch": "npx tsc -w",
+        "dev:update:umerx:types": "npm cache clean --force && npm update @umerx/umerx-blackdog-configurator-types-typescript"
     },
     "dependencies": {
         "@umerx/umerx-blackdog-configurator-types-typescript": "*",
-        "axios": "^1.6.7",
-        "zod": "^3.22.4"
+        "axios": "^1.6.7"
     },
     "devDependencies": {
         "@types/node": "^20.11.16",
