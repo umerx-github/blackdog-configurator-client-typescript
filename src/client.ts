@@ -175,6 +175,10 @@ export interface StrategyTemplateSeaDogDiscountScheme {
 
 export interface Client {
     symbol(): Symbol;
+    strategy(): Strategy;
+    order(): Order;
+    position(): Position;
+    strategyTemplateSeaDogDiscountScheme(): StrategyTemplateSeaDogDiscountScheme;
 }
 
 export class SymbolImpl implements Symbol {
