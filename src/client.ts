@@ -5,7 +5,6 @@ import {
     Position as PositionTypes,
     StrategyTemplateSeaDogDiscountScheme as StrategyTemplateSeaDogDiscountSchemeTypes,
 } from '@umerx/umerx-blackdog-configurator-types-typescript';
-import { URLSearchParams } from 'url';
 import axios from 'axios';
 
 export class ClientResponseError extends Error {
