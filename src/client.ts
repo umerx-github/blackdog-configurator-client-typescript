@@ -23,26 +23,6 @@ export interface Symbol {
     postMany(
         body: SymbolTypes.SymbolPostManyRequestBody
     ): Promise<SymbolTypes.SymbolPostManyResponseBodyData>;
-    putMany(
-        body: SymbolTypes.SymbolPostManyRequestBody
-    ): Promise<SymbolTypes.SymbolPutManyResponseBodyData>;
-    putSingle(
-        params: SymbolTypes.SymbolPutSingleRequestParams,
-        body: SymbolTypes.SymbolPutSingleRequestBody
-    ): Promise<SymbolTypes.SymbolPutSingleResponseBodyData>;
-    patchMany(
-        body: SymbolTypes.SymbolPatchManyRequestBody
-    ): Promise<SymbolTypes.SymbolPatchManyResponseBodyData>;
-    patchSingle(
-        params: SymbolTypes.SymbolPatchSingleRequestParams,
-        body: SymbolTypes.SymbolPatchSingleRequestBody
-    ): Promise<SymbolTypes.SymbolPatchSingleResponseBodyData>;
-    deleteMany(
-        query: SymbolTypes.SymbolDeleteManyRequestQuery
-    ): Promise<SymbolTypes.SymbolDeleteManyResponseBodyData>;
-    deleteSingle(
-        params: SymbolTypes.SymbolDeleteSingleRequestParams
-    ): Promise<SymbolTypes.SymbolDeleteSingleResponseBodyData>;
 }
 
 export interface Strategy {
@@ -107,6 +87,9 @@ export interface Order {
     deleteSingle(
         params: OrderTypes.OrderDeleteSingleRequestParams
     ): Promise<OrderTypes.OrderDeleteSingleResponseBodyData>;
+    fillSingle(
+        params: OrderTypes.OrderFillPostSingleRequestParams
+    ): Promise<OrderTypes.OrderFillPostSingleResponseBody>;
 }
 
 export interface Position {
@@ -119,26 +102,6 @@ export interface Position {
     postMany(
         body: PositionTypes.PositionPostManyRequestBody
     ): Promise<PositionTypes.PositionPostManyResponseBodyData>;
-    putMany(
-        body: PositionTypes.PositionPostManyRequestBody
-    ): Promise<PositionTypes.PositionPutManyResponseBodyData>;
-    putSingle(
-        params: PositionTypes.PositionPutSingleRequestParams,
-        body: PositionTypes.PositionPutSingleRequestBody
-    ): Promise<PositionTypes.PositionPutSingleResponseBodyData>;
-    patchMany(
-        body: PositionTypes.PositionPatchManyRequestBody
-    ): Promise<PositionTypes.PositionPatchManyResponseBodyData>;
-    patchSingle(
-        params: PositionTypes.PositionPatchSingleRequestParams,
-        body: PositionTypes.PositionPatchSingleRequestBody
-    ): Promise<PositionTypes.PositionPatchSingleResponseBodyData>;
-    deleteMany(
-        query: PositionTypes.PositionDeleteManyRequestQuery
-    ): Promise<PositionTypes.PositionDeleteManyResponseBodyData>;
-    deleteSingle(
-        params: PositionTypes.PositionDeleteSingleRequestParams
-    ): Promise<PositionTypes.PositionDeleteSingleResponseBodyData>;
 }
 
 export interface StrategyTemplateSeaDogDiscountScheme {
@@ -224,103 +187,6 @@ export class SymbolImpl implements Symbol {
                 body
             );
         const responseData = SymbolTypes.SymbolPostManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async putMany(
-        body: SymbolTypes.SymbolPostManyRequestBody
-    ): Promise<SymbolTypes.SymbolPutManyResponseBodyData> {
-        const response = await axios.put<SymbolTypes.SymbolPutManyResponseBody>(
-            `${this.baseUrl}`,
-            body
-        );
-        const responseData = SymbolTypes.SymbolPutManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async putSingle(
-        params: SymbolTypes.SymbolPutSingleRequestParams,
-        body: SymbolTypes.SymbolPutSingleRequestBody
-    ): Promise<SymbolTypes.SymbolPutSingleResponseBodyData> {
-        const response =
-            await axios.put<SymbolTypes.SymbolPutSingleResponseBody>(
-                `${this.baseUrl}/${params.id}`,
-                body
-            );
-        const responseData = SymbolTypes.SymbolPutSingleResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async patchMany(
-        body: SymbolTypes.SymbolPatchManyRequestBody
-    ): Promise<SymbolTypes.SymbolPatchManyResponseBodyData> {
-        const response =
-            await axios.patch<SymbolTypes.SymbolPatchManyResponseBody>(
-                `${this.baseUrl}`,
-                body
-            );
-        const responseData = SymbolTypes.SymbolPatchManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async patchSingle(
-        params: SymbolTypes.SymbolPatchSingleRequestParams,
-        body: SymbolTypes.SymbolPatchSingleRequestBody
-    ): Promise<SymbolTypes.SymbolPatchSingleResponseBodyData> {
-        const response =
-            await axios.patch<SymbolTypes.SymbolPatchSingleResponseBody>(
-                `${this.baseUrl}/${params.id}`,
-                body
-            );
-        const responseData = SymbolTypes.SymbolPatchSingleResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async deleteMany(
-        query: SymbolTypes.SymbolDeleteManyRequestQuery
-    ): Promise<SymbolTypes.SymbolDeleteManyResponseBodyData> {
-        const response =
-            await axios.delete<SymbolTypes.SymbolDeleteManyResponseBody>(
-                `${this.baseUrl}/?${new URLSearchParams(
-                    Object.entries(query)
-                ).toString()}`
-            );
-        const responseData = SymbolTypes.SymbolDeleteManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async deleteSingle(
-        params: SymbolTypes.SymbolDeleteSingleRequestParams
-    ): Promise<SymbolTypes.SymbolDeleteSingleResponseBodyData> {
-        const response =
-            await axios.delete<SymbolTypes.SymbolDeleteSingleResponseBody>(
-                `${this.baseUrl}/${params.id}`
-            );
-        const responseData = SymbolTypes.SymbolDeleteSingleResponseBodyFromRaw(
             response.data
         );
         if (responseData.status !== 'success') {
@@ -624,6 +490,15 @@ export class OrderImpl implements Order {
         }
         return responseData.data;
     }
+    async fillSingle(
+        params: OrderTypes.OrderFillPostSingleRequestParams
+    ): Promise<OrderTypes.OrderFillPostSingleResponseBody> {
+        const response =
+            await axios.post<OrderTypes.OrderFillPostSingleResponseBody>(
+                `${this.baseUrl}/${params.id}/fill`
+            );
+        return response.data;
+    }
 }
 
 export class PositionImpl implements Position {
@@ -672,103 +547,6 @@ export class PositionImpl implements Position {
         const responseData = PositionTypes.PositionPostManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async putMany(
-        body: PositionTypes.PositionPostManyRequestBody
-    ): Promise<PositionTypes.PositionPutManyResponseBodyData> {
-        const response =
-            await axios.put<PositionTypes.PositionPutManyResponseBody>(
-                `${this.baseUrl}`,
-                body
-            );
-        const responseData = PositionTypes.PositionPutManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async putSingle(
-        params: PositionTypes.PositionPutSingleRequestParams,
-        body: PositionTypes.PositionPutSingleRequestBody
-    ): Promise<PositionTypes.PositionPutSingleResponseBodyData> {
-        const response =
-            await axios.put<PositionTypes.PositionPutSingleResponseBody>(
-                `${this.baseUrl}/${params.id}`,
-                body
-            );
-        const responseData = PositionTypes.PositionPutSingleResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async patchMany(
-        body: PositionTypes.PositionPatchManyRequestBody
-    ): Promise<PositionTypes.PositionPatchManyResponseBodyData> {
-        const response =
-            await axios.patch<PositionTypes.PositionPatchManyResponseBody>(
-                `${this.baseUrl}`,
-                body
-            );
-        const responseData = PositionTypes.PositionPatchManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async patchSingle(
-        params: PositionTypes.PositionPatchSingleRequestParams,
-        body: PositionTypes.PositionPatchSingleRequestBody
-    ): Promise<PositionTypes.PositionPatchSingleResponseBodyData> {
-        const response =
-            await axios.patch<PositionTypes.PositionPatchSingleResponseBody>(
-                `${this.baseUrl}/${params.id}`,
-                body
-            );
-        const responseData =
-            PositionTypes.PositionPatchSingleResponseBodyFromRaw(response.data);
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async deleteMany(
-        query: PositionTypes.PositionDeleteManyRequestQuery
-    ): Promise<PositionTypes.PositionDeleteManyResponseBodyData> {
-        const response =
-            await axios.delete<PositionTypes.PositionDeleteManyResponseBody>(
-                `${this.baseUrl}/?${new URLSearchParams(
-                    Object.entries(query)
-                ).toString()}`
-            );
-        const responseData =
-            PositionTypes.PositionDeleteManyResponseBodyFromRaw(response.data);
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async deleteSingle(
-        params: PositionTypes.PositionDeleteSingleRequestParams
-    ): Promise<PositionTypes.PositionDeleteSingleResponseBodyData> {
-        const response =
-            await axios.delete<PositionTypes.PositionDeleteSingleResponseBody>(
-                `${this.baseUrl}/${params.id}`
-            );
-        const responseData =
-            PositionTypes.PositionDeleteSingleResponseBodyFromRaw(
-                response.data
-            );
         if (responseData.status !== 'success') {
             throw new ClientResponseError(responseData.message);
         }
