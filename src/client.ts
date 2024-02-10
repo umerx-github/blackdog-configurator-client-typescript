@@ -67,29 +67,12 @@ export interface Order {
     postMany(
         body: OrderTypes.OrderPostManyRequestBody
     ): Promise<OrderTypes.OrderPostManyResponseBodyData>;
-    putMany(
-        body: OrderTypes.OrderPostManyRequestBody
-    ): Promise<OrderTypes.OrderPutManyResponseBodyData>;
-    putSingle(
-        params: OrderTypes.OrderPutSingleRequestParams,
-        body: OrderTypes.OrderPutSingleRequestBody
-    ): Promise<OrderTypes.OrderPutSingleResponseBodyData>;
-    patchMany(
-        body: OrderTypes.OrderPatchManyRequestBody
-    ): Promise<OrderTypes.OrderPatchManyResponseBodyData>;
-    patchSingle(
-        params: OrderTypes.OrderPatchSingleRequestParams,
-        body: OrderTypes.OrderPatchSingleRequestBody
-    ): Promise<OrderTypes.OrderPatchSingleResponseBodyData>;
-    deleteMany(
-        query: OrderTypes.OrderDeleteManyRequestQuery
-    ): Promise<OrderTypes.OrderDeleteManyResponseBodyData>;
-    deleteSingle(
-        params: OrderTypes.OrderDeleteSingleRequestParams
-    ): Promise<OrderTypes.OrderDeleteSingleResponseBodyData>;
     fillSingle(
         params: OrderTypes.OrderFillPostSingleRequestParams
     ): Promise<OrderTypes.OrderFillPostSingleResponseBody>;
+    cancelSingle(
+        params: OrderTypes.OrderCancelPostSingleRequestParams
+    ): Promise<OrderTypes.OrderCancelPostSingleResponseBody>;
 }
 
 export interface Position {
@@ -394,108 +377,21 @@ export class OrderImpl implements Order {
         }
         return responseData.data;
     }
-    async putMany(
-        body: OrderTypes.OrderPostManyRequestBody
-    ): Promise<OrderTypes.OrderPutManyResponseBodyData> {
-        const response = await axios.put<OrderTypes.OrderPutManyResponseBody>(
-            `${this.baseUrl}`,
-            body
-        );
-        const responseData = OrderTypes.OrderPutManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async putSingle(
-        params: OrderTypes.OrderPutSingleRequestParams,
-        body: OrderTypes.OrderPutSingleRequestBody
-    ): Promise<OrderTypes.OrderPutSingleResponseBodyData> {
-        const response = await axios.put<OrderTypes.OrderPutSingleResponseBody>(
-            `${this.baseUrl}/${params.id}`,
-            body
-        );
-        const responseData = OrderTypes.OrderPutSingleResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async patchMany(
-        body: OrderTypes.OrderPatchManyRequestBody
-    ): Promise<OrderTypes.OrderPatchManyResponseBodyData> {
-        const response =
-            await axios.patch<OrderTypes.OrderPatchManyResponseBody>(
-                `${this.baseUrl}`,
-                body
-            );
-        const responseData = OrderTypes.OrderPatchManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async patchSingle(
-        params: OrderTypes.OrderPatchSingleRequestParams,
-        body: OrderTypes.OrderPatchSingleRequestBody
-    ): Promise<OrderTypes.OrderPatchSingleResponseBodyData> {
-        const response =
-            await axios.patch<OrderTypes.OrderPatchSingleResponseBody>(
-                `${this.baseUrl}/${params.id}`,
-                body
-            );
-        const responseData = OrderTypes.OrderPatchSingleResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async deleteMany(
-        query: OrderTypes.OrderDeleteManyRequestQuery
-    ): Promise<OrderTypes.OrderDeleteManyResponseBodyData> {
-        const response =
-            await axios.delete<OrderTypes.OrderDeleteManyResponseBody>(
-                `${this.baseUrl}/?${new URLSearchParams(
-                    Object.entries(query)
-                ).toString()}`
-            );
-        const responseData = OrderTypes.OrderDeleteManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
-    async deleteSingle(
-        params: OrderTypes.OrderDeleteSingleRequestParams
-    ): Promise<OrderTypes.OrderDeleteSingleResponseBodyData> {
-        const response =
-            await axios.delete<OrderTypes.OrderDeleteSingleResponseBody>(
-                `${this.baseUrl}/${params.id}`
-            );
-        const responseData = OrderTypes.OrderDeleteSingleResponseBodyFromRaw(
-            response.data
-        );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
-        }
-        return responseData.data;
-    }
     async fillSingle(
         params: OrderTypes.OrderFillPostSingleRequestParams
     ): Promise<OrderTypes.OrderFillPostSingleResponseBody> {
         const response =
             await axios.post<OrderTypes.OrderFillPostSingleResponseBody>(
                 `${this.baseUrl}/${params.id}/fill`
+            );
+        return response.data;
+    }
+    async cancelSingle(
+        params: OrderTypes.OrderCancelPostSingleRequestParams
+    ): Promise<OrderTypes.OrderCancelPostSingleResponseBody> {
+        const response =
+            await axios.post<OrderTypes.OrderCancelPostSingleResponseBody>(
+                `${this.baseUrl}/${params.id}/cancel`
             );
         return response.data;
     }
