@@ -1,6 +1,7 @@
 import {
     Symbol as SymbolTypes,
     Strategy as StrategyTypes,
+    StrategyLog as StrategyLogTypes,
     Order as OrderTypes,
     Position as PositionTypes,
     StrategyTemplateSeaDogDiscountScheme as StrategyTemplateSeaDogDiscountSchemeTypes,
@@ -55,6 +56,18 @@ export interface Strategy {
     deleteSingle(
         params: StrategyTypes.StrategyDeleteSingleRequestParams
     ): Promise<StrategyTypes.StrategyDeleteSingleResponseBodyData>;
+}
+
+export interface StrategyLog {
+    getMany(
+        query: StrategyLogTypes.StrategyLogGetManyRequestQuery
+    ): Promise<StrategyLogTypes.StrategyLogGetManyResponseBodyData>;
+    getSingle(
+        params: StrategyLogTypes.StrategyLogGetSingleRequestParams
+    ): Promise<StrategyLogTypes.StrategyLogGetSingleResponseBodyData>;
+    postMany(
+        body: StrategyLogTypes.StrategyLogPostManyRequestBody
+    ): Promise<StrategyLogTypes.StrategyLogPostManyResponseBodyData>;
 }
 
 export interface Order {
@@ -320,6 +333,62 @@ export class StrategyImpl implements Strategy {
             );
         const responseData =
             StrategyTypes.StrategyDeleteSingleResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData.data;
+    }
+}
+
+export class StrategyLogImpl implements StrategyLog {
+    constructor(public readonly baseUrl: string) {}
+
+    async getMany(
+        query: StrategyLogTypes.StrategyLogGetManyRequestQuery
+    ): Promise<StrategyLogTypes.StrategyLogGetManyResponseBodyData> {
+        const response =
+            await axios.get<StrategyLogTypes.StrategyLogGetManyResponseBody>(
+                `${this.baseUrl}/?${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
+            );
+        const responseData =
+            StrategyLogTypes.StrategyLogGetManyResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData.data;
+    }
+    async getSingle(
+        params: StrategyLogTypes.StrategyLogGetSingleRequestParams
+    ): Promise<StrategyLogTypes.StrategyLogGetSingleResponseBodyData> {
+        const response =
+            await axios.get<StrategyLogTypes.StrategyLogGetSingleResponseBody>(
+                `${this.baseUrl}/${params.id}`
+            );
+        const responseData =
+            StrategyLogTypes.StrategyLogGetSingleResponseBodyFromRaw(
+                response.data
+            );
+        if (responseData.status !== 'success') {
+            throw new ClientResponseError(responseData.message);
+        }
+        return responseData.data;
+    }
+    async postMany(
+        body: StrategyLogTypes.StrategyLogPostManyRequestBody
+    ): Promise<StrategyLogTypes.StrategyLogPostManyResponseBodyData> {
+        const response =
+            await axios.post<StrategyLogTypes.StrategyLogPostManyResponseBody>(
+                `${this.baseUrl}`,
+                body
+            );
+        const responseData =
+            StrategyLogTypes.StrategyLogPostManyResponseBodyFromRaw(
                 response.data
             );
         if (responseData.status !== 'success') {
@@ -612,6 +681,9 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     }
 }
 
+/**
+ * @todo Implement a "Requestor" interface. Requestor interface should either be instantiated by client or be passed to the client constructor. The client should pass the Requestor to the client methods.
+ */
 export class ClientImpl implements Client {
     constructor(public readonly baseUrl: string) {}
 
@@ -620,6 +692,9 @@ export class ClientImpl implements Client {
     }
     strategy(): Strategy {
         return new StrategyImpl(`${this.baseUrl}/strategy`);
+    }
+    strategyLog(): StrategyLog {
+        return new StrategyLogImpl(`${this.baseUrl}/strategyLog`);
     }
     order(): Order {
         return new OrderImpl(`${this.baseUrl}/order`);
