@@ -17,69 +17,69 @@ export class ClientResponseError extends Error {
 export interface Symbol {
     getMany(
         query: SymbolTypes.SymbolGetManyRequestQuery
-    ): Promise<SymbolTypes.SymbolGetManyResponseBodyData>;
+    ): Promise<SymbolTypes.SymbolGetManyResponseBody>;
     getSingle(
         params: SymbolTypes.SymbolGetSingleRequestParams
-    ): Promise<SymbolTypes.SymbolGetSingleResponseBodyData>;
+    ): Promise<SymbolTypes.SymbolGetSingleResponseBody>;
     postMany(
         body: SymbolTypes.SymbolPostManyRequestBody
-    ): Promise<SymbolTypes.SymbolPostManyResponseBodyData>;
+    ): Promise<SymbolTypes.SymbolPostManyResponseBody>;
 }
 
 export interface Strategy {
     getMany(
         query: StrategyTypes.StrategyGetManyRequestQuery
-    ): Promise<StrategyTypes.StrategyGetManyResponseBodyData>;
+    ): Promise<StrategyTypes.StrategyGetManyResponseBody>;
     getSingle(
         params: StrategyTypes.StrategyGetSingleRequestParams
-    ): Promise<StrategyTypes.StrategyGetSingleResponseBodyData>;
+    ): Promise<StrategyTypes.StrategyGetSingleResponseBody>;
     postMany(
         body: StrategyTypes.StrategyPostManyRequestBody
-    ): Promise<StrategyTypes.StrategyPostManyResponseBodyData>;
+    ): Promise<StrategyTypes.StrategyPostManyResponseBody>;
     putMany(
         body: StrategyTypes.StrategyPostManyRequestBody
-    ): Promise<StrategyTypes.StrategyPutManyResponseBodyData>;
+    ): Promise<StrategyTypes.StrategyPutManyResponseBody>;
     putSingle(
         params: StrategyTypes.StrategyPutSingleRequestParams,
         body: StrategyTypes.StrategyPutSingleRequestBody
-    ): Promise<StrategyTypes.StrategyPutSingleResponseBodyData>;
+    ): Promise<StrategyTypes.StrategyPutSingleResponseBody>;
     patchMany(
         body: StrategyTypes.StrategyPatchManyRequestBody
-    ): Promise<StrategyTypes.StrategyPatchManyResponseBodyData>;
+    ): Promise<StrategyTypes.StrategyPatchManyResponseBody>;
     patchSingle(
         params: StrategyTypes.StrategyPatchSingleRequestParams,
         body: StrategyTypes.StrategyPatchSingleRequestBody
-    ): Promise<StrategyTypes.StrategyPatchSingleResponseBodyData>;
+    ): Promise<StrategyTypes.StrategyPatchSingleResponseBody>;
     deleteMany(
         query: StrategyTypes.StrategyDeleteManyRequestQuery
-    ): Promise<StrategyTypes.StrategyDeleteManyResponseBodyData>;
+    ): Promise<StrategyTypes.StrategyDeleteManyResponseBody>;
     deleteSingle(
         params: StrategyTypes.StrategyDeleteSingleRequestParams
-    ): Promise<StrategyTypes.StrategyDeleteSingleResponseBodyData>;
+    ): Promise<StrategyTypes.StrategyDeleteSingleResponseBody>;
 }
 
 export interface StrategyLog {
     getMany(
         query: StrategyLogTypes.StrategyLogGetManyRequestQuery
-    ): Promise<StrategyLogTypes.StrategyLogGetManyResponseBodyData>;
+    ): Promise<StrategyLogTypes.StrategyLogGetManyResponseBody>;
     getSingle(
         params: StrategyLogTypes.StrategyLogGetSingleRequestParams
-    ): Promise<StrategyLogTypes.StrategyLogGetSingleResponseBodyData>;
+    ): Promise<StrategyLogTypes.StrategyLogGetSingleResponseBody>;
     postMany(
         body: StrategyLogTypes.StrategyLogPostManyRequestBody
-    ): Promise<StrategyLogTypes.StrategyLogPostManyResponseBodyData>;
+    ): Promise<StrategyLogTypes.StrategyLogPostManyResponseBody>;
 }
 
 export interface Order {
     getMany(
         query: OrderTypes.OrderGetManyRequestQuery
-    ): Promise<OrderTypes.OrderGetManyResponseBodyData>;
+    ): Promise<OrderTypes.OrderGetManyResponseBody>;
     getSingle(
         params: OrderTypes.OrderGetSingleRequestParams
-    ): Promise<OrderTypes.OrderGetSingleResponseBodyData>;
+    ): Promise<OrderTypes.OrderGetSingleResponseBody>;
     postMany(
         body: OrderTypes.OrderPostManyRequestBody
-    ): Promise<OrderTypes.OrderPostManyResponseBodyData>;
+    ): Promise<OrderTypes.OrderPostManyResponseBody>;
     fillSingle(
         params: OrderTypes.OrderFillPostSingleRequestParams
     ): Promise<OrderTypes.OrderFillPostSingleResponseBody>;
@@ -91,45 +91,45 @@ export interface Order {
 export interface Position {
     getMany(
         query: PositionTypes.PositionGetManyRequestQuery
-    ): Promise<PositionTypes.PositionGetManyResponseBodyData>;
+    ): Promise<PositionTypes.PositionGetManyResponseBody>;
     getSingle(
         params: PositionTypes.PositionGetSingleRequestParams
-    ): Promise<PositionTypes.PositionGetSingleResponseBodyData>;
+    ): Promise<PositionTypes.PositionGetSingleResponseBody>;
     postMany(
         body: PositionTypes.PositionPostManyRequestBody
-    ): Promise<PositionTypes.PositionPostManyResponseBodyData>;
+    ): Promise<PositionTypes.PositionPostManyResponseBody>;
 }
 
 export interface StrategyTemplateSeaDogDiscountScheme {
     getMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyRequestQuery
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBodyData>;
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody>;
     getSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleRequestParams
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBodyData>;
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBody>;
     postMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBodyData>;
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBody>;
     putMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBodyData>;
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBody>;
     putSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleRequestParams,
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBodyData>;
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBody>;
     patchMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBodyData>;
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBody>;
     patchSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleRequestParams,
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBodyData>;
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBody>;
     deleteMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyRequestQuery
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBodyData>;
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody>;
     deleteSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleRequestParams
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBodyData>;
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBody>;
 }
 
 export interface Client {
@@ -145,50 +145,50 @@ export class SymbolImpl implements Symbol {
 
     async getMany(
         query: SymbolTypes.SymbolGetManyRequestQuery
-    ): Promise<SymbolTypes.SymbolGetManyResponseBodyData> {
+    ): Promise<SymbolTypes.SymbolGetManyResponseBody> {
         const response = await axios.get<SymbolTypes.SymbolGetManyResponseBody>(
             `${this.baseUrl}/?${new URLSearchParams(
                 Object.entries(query)
             ).toString()}`
         );
-        const responseData = SymbolTypes.SymbolGetManyResponseBodyFromRaw(
+        const responseBody = SymbolTypes.SymbolGetManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async getSingle(
         params: SymbolTypes.SymbolGetSingleRequestParams
-    ): Promise<SymbolTypes.SymbolGetSingleResponseBodyData> {
+    ): Promise<SymbolTypes.SymbolGetSingleResponseBody> {
         const response =
             await axios.get<SymbolTypes.SymbolGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        const responseData = SymbolTypes.SymbolGetSingleResponseBodyFromRaw(
+        const responseBody = SymbolTypes.SymbolGetSingleResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async postMany(
         body: SymbolTypes.SymbolPostManyRequestBody
-    ): Promise<SymbolTypes.SymbolPostManyResponseBodyData> {
+    ): Promise<SymbolTypes.SymbolPostManyResponseBody> {
         const response =
             await axios.post<SymbolTypes.SymbolPostManyResponseBody>(
                 `${this.baseUrl}`,
                 body
             );
-        const responseData = SymbolTypes.SymbolPostManyResponseBodyFromRaw(
+        const responseBody = SymbolTypes.SymbolPostManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
 }
 
@@ -197,148 +197,148 @@ export class StrategyImpl implements Strategy {
 
     async getMany(
         query: StrategyTypes.StrategyGetManyRequestQuery
-    ): Promise<StrategyTypes.StrategyGetManyResponseBodyData> {
+    ): Promise<StrategyTypes.StrategyGetManyResponseBody> {
         const response =
             await axios.get<StrategyTypes.StrategyGetManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
-        const responseData = StrategyTypes.StrategyGetManyResponseBodyFromRaw(
+        const responseBody = StrategyTypes.StrategyGetManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async getSingle(
         params: StrategyTypes.StrategyGetSingleRequestParams
-    ): Promise<StrategyTypes.StrategyGetSingleResponseBodyData> {
+    ): Promise<StrategyTypes.StrategyGetSingleResponseBody> {
         const response =
             await axios.get<StrategyTypes.StrategyGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        const responseData = StrategyTypes.StrategyGetSingleResponseBodyFromRaw(
+        const responseBody = StrategyTypes.StrategyGetSingleResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async postMany(
         body: StrategyTypes.StrategyPostManyRequestBody
-    ): Promise<StrategyTypes.StrategyPostManyResponseBodyData> {
+    ): Promise<StrategyTypes.StrategyPostManyResponseBody> {
         const response =
             await axios.post<StrategyTypes.StrategyPostManyResponseBody>(
                 `${this.baseUrl}`,
                 body
             );
-        const responseData = StrategyTypes.StrategyPostManyResponseBodyFromRaw(
+        const responseBody = StrategyTypes.StrategyPostManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async putMany(
         body: StrategyTypes.StrategyPostManyRequestBody
-    ): Promise<StrategyTypes.StrategyPutManyResponseBodyData> {
+    ): Promise<StrategyTypes.StrategyPutManyResponseBody> {
         const response =
             await axios.put<StrategyTypes.StrategyPutManyResponseBody>(
                 `${this.baseUrl}`,
                 body
             );
-        const responseData = StrategyTypes.StrategyPutManyResponseBodyFromRaw(
+        const responseBody = StrategyTypes.StrategyPutManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async putSingle(
         params: StrategyTypes.StrategyPutSingleRequestParams,
         body: StrategyTypes.StrategyPutSingleRequestBody
-    ): Promise<StrategyTypes.StrategyPutSingleResponseBodyData> {
+    ): Promise<StrategyTypes.StrategyPutSingleResponseBody> {
         const response =
             await axios.put<StrategyTypes.StrategyPutSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        const responseData = StrategyTypes.StrategyPutSingleResponseBodyFromRaw(
+        const responseBody = StrategyTypes.StrategyPutSingleResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async patchMany(
         body: StrategyTypes.StrategyPatchManyRequestBody
-    ): Promise<StrategyTypes.StrategyPatchManyResponseBodyData> {
+    ): Promise<StrategyTypes.StrategyPatchManyResponseBody> {
         const response =
             await axios.patch<StrategyTypes.StrategyPatchManyResponseBody>(
                 `${this.baseUrl}`,
                 body
             );
-        const responseData = StrategyTypes.StrategyPatchManyResponseBodyFromRaw(
+        const responseBody = StrategyTypes.StrategyPatchManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async patchSingle(
         params: StrategyTypes.StrategyPatchSingleRequestParams,
         body: StrategyTypes.StrategyPatchSingleRequestBody
-    ): Promise<StrategyTypes.StrategyPatchSingleResponseBodyData> {
+    ): Promise<StrategyTypes.StrategyPatchSingleResponseBody> {
         const response =
             await axios.patch<StrategyTypes.StrategyPatchSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        const responseData =
+        const responseBody =
             StrategyTypes.StrategyPatchSingleResponseBodyFromRaw(response.data);
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async deleteMany(
         query: StrategyTypes.StrategyDeleteManyRequestQuery
-    ): Promise<StrategyTypes.StrategyDeleteManyResponseBodyData> {
+    ): Promise<StrategyTypes.StrategyDeleteManyResponseBody> {
         const response =
             await axios.delete<StrategyTypes.StrategyDeleteManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
-        const responseData =
+        const responseBody =
             StrategyTypes.StrategyDeleteManyResponseBodyFromRaw(response.data);
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async deleteSingle(
         params: StrategyTypes.StrategyDeleteSingleRequestParams
-    ): Promise<StrategyTypes.StrategyDeleteSingleResponseBodyData> {
+    ): Promise<StrategyTypes.StrategyDeleteSingleResponseBody> {
         const response =
             await axios.delete<StrategyTypes.StrategyDeleteSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        const responseData =
+        const responseBody =
             StrategyTypes.StrategyDeleteSingleResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
 }
 
@@ -347,54 +347,54 @@ export class StrategyLogImpl implements StrategyLog {
 
     async getMany(
         query: StrategyLogTypes.StrategyLogGetManyRequestQuery
-    ): Promise<StrategyLogTypes.StrategyLogGetManyResponseBodyData> {
+    ): Promise<StrategyLogTypes.StrategyLogGetManyResponseBody> {
         const response =
             await axios.get<StrategyLogTypes.StrategyLogGetManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
-        const responseData =
+        const responseBody =
             StrategyLogTypes.StrategyLogGetManyResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async getSingle(
         params: StrategyLogTypes.StrategyLogGetSingleRequestParams
-    ): Promise<StrategyLogTypes.StrategyLogGetSingleResponseBodyData> {
+    ): Promise<StrategyLogTypes.StrategyLogGetSingleResponseBody> {
         const response =
             await axios.get<StrategyLogTypes.StrategyLogGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        const responseData =
+        const responseBody =
             StrategyLogTypes.StrategyLogGetSingleResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async postMany(
         body: StrategyLogTypes.StrategyLogPostManyRequestBody
-    ): Promise<StrategyLogTypes.StrategyLogPostManyResponseBodyData> {
+    ): Promise<StrategyLogTypes.StrategyLogPostManyResponseBody> {
         const response =
             await axios.post<StrategyLogTypes.StrategyLogPostManyResponseBody>(
                 `${this.baseUrl}`,
                 body
             );
-        const responseData =
+        const responseBody =
             StrategyLogTypes.StrategyLogPostManyResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
 }
 
@@ -403,48 +403,48 @@ export class OrderImpl implements Order {
 
     async getMany(
         query: OrderTypes.OrderGetManyRequestQuery
-    ): Promise<OrderTypes.OrderGetManyResponseBodyData> {
+    ): Promise<OrderTypes.OrderGetManyResponseBody> {
         const response = await axios.get<OrderTypes.OrderGetManyResponseBody>(
             `${this.baseUrl}/?${new URLSearchParams(
                 Object.entries(query)
             ).toString()}`
         );
-        const responseData = OrderTypes.OrderGetManyResponseBodyFromRaw(
+        const responseBody = OrderTypes.OrderGetManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async getSingle(
         params: OrderTypes.OrderGetSingleRequestParams
-    ): Promise<OrderTypes.OrderGetSingleResponseBodyData> {
+    ): Promise<OrderTypes.OrderGetSingleResponseBody> {
         const response = await axios.get<OrderTypes.OrderGetSingleResponseBody>(
             `${this.baseUrl}/${params.id}`
         );
-        const responseData = OrderTypes.OrderGetSingleResponseBodyFromRaw(
+        const responseBody = OrderTypes.OrderGetSingleResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async postMany(
         body: OrderTypes.OrderPostManyRequestBody
-    ): Promise<OrderTypes.OrderPostManyResponseBodyData> {
+    ): Promise<OrderTypes.OrderPostManyResponseBody> {
         const response = await axios.post<OrderTypes.OrderPostManyResponseBody>(
             `${this.baseUrl}`,
             body
         );
-        const responseData = OrderTypes.OrderPostManyResponseBodyFromRaw(
+        const responseBody = OrderTypes.OrderPostManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async fillSingle(
         params: OrderTypes.OrderFillPostSingleRequestParams
@@ -471,51 +471,51 @@ export class PositionImpl implements Position {
 
     async getMany(
         query: PositionTypes.PositionGetManyRequestQuery
-    ): Promise<PositionTypes.PositionGetManyResponseBodyData> {
+    ): Promise<PositionTypes.PositionGetManyResponseBody> {
         const response =
             await axios.get<PositionTypes.PositionGetManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
-        const responseData = PositionTypes.PositionGetManyResponseBodyFromRaw(
+        const responseBody = PositionTypes.PositionGetManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async getSingle(
         params: PositionTypes.PositionGetSingleRequestParams
-    ): Promise<PositionTypes.PositionGetSingleResponseBodyData> {
+    ): Promise<PositionTypes.PositionGetSingleResponseBody> {
         const response =
             await axios.get<PositionTypes.PositionGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        const responseData = PositionTypes.PositionGetSingleResponseBodyFromRaw(
+        const responseBody = PositionTypes.PositionGetSingleResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async postMany(
         body: PositionTypes.PositionPostManyRequestBody
-    ): Promise<PositionTypes.PositionPostManyResponseBodyData> {
+    ): Promise<PositionTypes.PositionPostManyResponseBody> {
         const response =
             await axios.post<PositionTypes.PositionPostManyResponseBody>(
                 `${this.baseUrl}`,
                 body
             );
-        const responseData = PositionTypes.PositionPostManyResponseBodyFromRaw(
+        const responseBody = PositionTypes.PositionPostManyResponseBodyFromRaw(
             response.data
         );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
 }
 
@@ -526,158 +526,158 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
 
     async getMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyRequestQuery
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBodyData> {
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody> {
         const response =
             await axios.get<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
-        const responseData =
+        const responseBody =
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async getSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleRequestParams
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBodyData> {
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBody> {
         const response =
             await axios.get<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        const responseData =
+        const responseBody =
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async postMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBodyData> {
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBody> {
         const response =
             await axios.post<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBody>(
                 `${this.baseUrl}`,
                 body
             );
-        const responseData =
+        const responseBody =
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async putMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBodyData> {
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBody> {
         const response =
             await axios.put<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBody>(
                 `${this.baseUrl}`,
                 body
             );
-        const responseData =
+        const responseBody =
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async putSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleRequestParams,
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBodyData> {
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBody> {
         const response =
             await axios.put<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        const responseData =
+        const responseBody =
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async patchMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBodyData> {
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBody> {
         const response =
             await axios.patch<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBody>(
                 `${this.baseUrl}`,
                 body
             );
-        const responseData =
+        const responseBody =
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async patchSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleRequestParams,
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBodyData> {
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBody> {
         const response =
             await axios.patch<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`,
                 body
             );
-        const responseData =
+        const responseBody =
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async deleteMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyRequestQuery
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBodyData> {
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody> {
         const response =
             await axios.delete<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
                     Object.entries(query)
                 ).toString()}`
             );
-        const responseData =
+        const responseBody =
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
     async deleteSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleRequestParams
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBodyData> {
+    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBody> {
         const response =
             await axios.delete<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
             );
-        const responseData =
+        const responseBody =
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBodyFromRaw(
                 response.data
             );
-        if (responseData.status !== 'success') {
-            throw new ClientResponseError(responseData.message);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return responseData.data;
+        return responseBody;
     }
 }
 
