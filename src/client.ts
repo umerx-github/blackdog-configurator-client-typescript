@@ -202,6 +202,7 @@ export interface StrategyTemplateSeaDogDiscountScheme {
 export interface Client {
     symbol(): Symbol;
     strategy(): Strategy;
+    strategyLog(): StrategyLog;
     order(): Order;
     position(): Position;
     strategyTemplateSeaDogDiscountScheme(): StrategyTemplateSeaDogDiscountScheme;
