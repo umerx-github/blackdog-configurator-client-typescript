@@ -6,6 +6,7 @@ import {
     Position as PositionTypes,
     StrategyTemplateSeaDogDiscountScheme as StrategyTemplateSeaDogDiscountSchemeTypes,
 } from '@umerx/umerx-blackdog-configurator-types-typescript';
+import { ResponseBaseSuccess } from '@umerx/umerx-blackdog-configurator-types-typescript/build/src/response.js';
 import axios from 'axios';
 
 export class ClientResponseError extends Error {
@@ -17,119 +18,185 @@ export class ClientResponseError extends Error {
 export interface Symbol {
     getMany(
         query: SymbolTypes.SymbolGetManyRequestQuery
-    ): Promise<SymbolTypes.SymbolGetManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance[]>
+    >;
     getSingle(
         params: SymbolTypes.SymbolGetSingleRequestParams
-    ): Promise<SymbolTypes.SymbolGetSingleResponseBody>;
+    ): Promise<ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance>>;
     postMany(
         body: SymbolTypes.SymbolPostManyRequestBody
-    ): Promise<SymbolTypes.SymbolPostManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance[]>
+    >;
 }
 
 export interface Strategy {
     getMany(
         query: StrategyTypes.StrategyGetManyRequestQuery
-    ): Promise<StrategyTypes.StrategyGetManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
+    >;
     getSingle(
         params: StrategyTypes.StrategyGetSingleRequestParams
-    ): Promise<StrategyTypes.StrategyGetSingleResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
+    >;
     postMany(
         body: StrategyTypes.StrategyPostManyRequestBody
-    ): Promise<StrategyTypes.StrategyPostManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
+    >;
     putMany(
         body: StrategyTypes.StrategyPostManyRequestBody
-    ): Promise<StrategyTypes.StrategyPutManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
+    >;
     putSingle(
         params: StrategyTypes.StrategyPutSingleRequestParams,
         body: StrategyTypes.StrategyPutSingleRequestBody
-    ): Promise<StrategyTypes.StrategyPutSingleResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
+    >;
     patchMany(
         body: StrategyTypes.StrategyPatchManyRequestBody
-    ): Promise<StrategyTypes.StrategyPatchManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
+    >;
     patchSingle(
         params: StrategyTypes.StrategyPatchSingleRequestParams,
         body: StrategyTypes.StrategyPatchSingleRequestBody
-    ): Promise<StrategyTypes.StrategyPatchSingleResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
+    >;
     deleteMany(
         query: StrategyTypes.StrategyDeleteManyRequestQuery
-    ): Promise<StrategyTypes.StrategyDeleteManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
+    >;
     deleteSingle(
         params: StrategyTypes.StrategyDeleteSingleRequestParams
-    ): Promise<StrategyTypes.StrategyDeleteSingleResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
+    >;
 }
 
 export interface StrategyLog {
     getMany(
         query: StrategyLogTypes.StrategyLogGetManyRequestQuery
-    ): Promise<StrategyLogTypes.StrategyLogGetManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyLogTypes.StrategyLogResponseBodyDataInstance[]
+        >
+    >;
     getSingle(
         params: StrategyLogTypes.StrategyLogGetSingleRequestParams
-    ): Promise<StrategyLogTypes.StrategyLogGetSingleResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyLogTypes.StrategyLogResponseBodyDataInstance>
+    >;
     postMany(
         body: StrategyLogTypes.StrategyLogPostManyRequestBody
-    ): Promise<StrategyLogTypes.StrategyLogPostManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyLogTypes.StrategyLogResponseBodyDataInstance[]
+        >
+    >;
 }
 
 export interface Order {
     getMany(
         query: OrderTypes.OrderGetManyRequestQuery
-    ): Promise<OrderTypes.OrderGetManyResponseBody>;
+    ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance[]>>;
     getSingle(
         params: OrderTypes.OrderGetSingleRequestParams
-    ): Promise<OrderTypes.OrderGetSingleResponseBody>;
+    ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance>>;
     postMany(
         body: OrderTypes.OrderPostManyRequestBody
-    ): Promise<OrderTypes.OrderPostManyResponseBody>;
+    ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance[]>>;
     fillSingle(
         params: OrderTypes.OrderFillPostSingleRequestParams
-    ): Promise<OrderTypes.OrderFillPostSingleResponseBody>;
+    ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance>>;
     cancelSingle(
         params: OrderTypes.OrderCancelPostSingleRequestParams
-    ): Promise<OrderTypes.OrderCancelPostSingleResponseBody>;
+    ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance>>;
 }
 
 export interface Position {
     getMany(
         query: PositionTypes.PositionGetManyRequestQuery
-    ): Promise<PositionTypes.PositionGetManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<PositionTypes.PositionResponseBodyDataInstance[]>
+    >;
     getSingle(
         params: PositionTypes.PositionGetSingleRequestParams
-    ): Promise<PositionTypes.PositionGetSingleResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<PositionTypes.PositionResponseBodyDataInstance>
+    >;
     postMany(
         body: PositionTypes.PositionPostManyRequestBody
-    ): Promise<PositionTypes.PositionPostManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<PositionTypes.PositionResponseBodyDataInstance[]>
+    >;
 }
 
 export interface StrategyTemplateSeaDogDiscountScheme {
     getMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyRequestQuery
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
+        >
+    >;
     getSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleRequestParams
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
+    >;
     postMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
+        >
+    >;
     putMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
+        >
+    >;
     putSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleRequestParams,
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
+    >;
     patchMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
+        >
+    >;
     patchSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleRequestParams,
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
+    >;
     deleteMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyRequestQuery
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
+        >
+    >;
     deleteSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleRequestParams
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBody>;
+    ): Promise<
+        ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
+    >;
 }
 
 export interface Client {
@@ -145,7 +212,9 @@ export class SymbolImpl implements Symbol {
 
     async getMany(
         query: SymbolTypes.SymbolGetManyRequestQuery
-    ): Promise<SymbolTypes.SymbolGetManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance[]>
+    > {
         const response = await axios.get<SymbolTypes.SymbolGetManyResponseBody>(
             `${this.baseUrl}/?${new URLSearchParams(
                 Object.entries(query)
@@ -161,7 +230,9 @@ export class SymbolImpl implements Symbol {
     }
     async getSingle(
         params: SymbolTypes.SymbolGetSingleRequestParams
-    ): Promise<SymbolTypes.SymbolGetSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance>
+    > {
         const response =
             await axios.get<SymbolTypes.SymbolGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
@@ -176,7 +247,9 @@ export class SymbolImpl implements Symbol {
     }
     async postMany(
         body: SymbolTypes.SymbolPostManyRequestBody
-    ): Promise<SymbolTypes.SymbolPostManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance[]>
+    > {
         const response =
             await axios.post<SymbolTypes.SymbolPostManyResponseBody>(
                 `${this.baseUrl}`,
@@ -197,7 +270,9 @@ export class StrategyImpl implements Strategy {
 
     async getMany(
         query: StrategyTypes.StrategyGetManyRequestQuery
-    ): Promise<StrategyTypes.StrategyGetManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
+    > {
         const response =
             await axios.get<StrategyTypes.StrategyGetManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
@@ -214,7 +289,9 @@ export class StrategyImpl implements Strategy {
     }
     async getSingle(
         params: StrategyTypes.StrategyGetSingleRequestParams
-    ): Promise<StrategyTypes.StrategyGetSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
+    > {
         const response =
             await axios.get<StrategyTypes.StrategyGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
@@ -229,7 +306,9 @@ export class StrategyImpl implements Strategy {
     }
     async postMany(
         body: StrategyTypes.StrategyPostManyRequestBody
-    ): Promise<StrategyTypes.StrategyPostManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
+    > {
         const response =
             await axios.post<StrategyTypes.StrategyPostManyResponseBody>(
                 `${this.baseUrl}`,
@@ -245,7 +324,9 @@ export class StrategyImpl implements Strategy {
     }
     async putMany(
         body: StrategyTypes.StrategyPostManyRequestBody
-    ): Promise<StrategyTypes.StrategyPutManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
+    > {
         const response =
             await axios.put<StrategyTypes.StrategyPutManyResponseBody>(
                 `${this.baseUrl}`,
@@ -262,7 +343,9 @@ export class StrategyImpl implements Strategy {
     async putSingle(
         params: StrategyTypes.StrategyPutSingleRequestParams,
         body: StrategyTypes.StrategyPutSingleRequestBody
-    ): Promise<StrategyTypes.StrategyPutSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
+    > {
         const response =
             await axios.put<StrategyTypes.StrategyPutSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`,
@@ -278,7 +361,9 @@ export class StrategyImpl implements Strategy {
     }
     async patchMany(
         body: StrategyTypes.StrategyPatchManyRequestBody
-    ): Promise<StrategyTypes.StrategyPatchManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
+    > {
         const response =
             await axios.patch<StrategyTypes.StrategyPatchManyResponseBody>(
                 `${this.baseUrl}`,
@@ -295,7 +380,9 @@ export class StrategyImpl implements Strategy {
     async patchSingle(
         params: StrategyTypes.StrategyPatchSingleRequestParams,
         body: StrategyTypes.StrategyPatchSingleRequestBody
-    ): Promise<StrategyTypes.StrategyPatchSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
+    > {
         const response =
             await axios.patch<StrategyTypes.StrategyPatchSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`,
@@ -310,7 +397,9 @@ export class StrategyImpl implements Strategy {
     }
     async deleteMany(
         query: StrategyTypes.StrategyDeleteManyRequestQuery
-    ): Promise<StrategyTypes.StrategyDeleteManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
+    > {
         const response =
             await axios.delete<StrategyTypes.StrategyDeleteManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
@@ -326,7 +415,9 @@ export class StrategyImpl implements Strategy {
     }
     async deleteSingle(
         params: StrategyTypes.StrategyDeleteSingleRequestParams
-    ): Promise<StrategyTypes.StrategyDeleteSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
+    > {
         const response =
             await axios.delete<StrategyTypes.StrategyDeleteSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
@@ -347,7 +438,11 @@ export class StrategyLogImpl implements StrategyLog {
 
     async getMany(
         query: StrategyLogTypes.StrategyLogGetManyRequestQuery
-    ): Promise<StrategyLogTypes.StrategyLogGetManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyLogTypes.StrategyLogResponseBodyDataInstance[]
+        >
+    > {
         const response =
             await axios.get<StrategyLogTypes.StrategyLogGetManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
@@ -365,7 +460,9 @@ export class StrategyLogImpl implements StrategyLog {
     }
     async getSingle(
         params: StrategyLogTypes.StrategyLogGetSingleRequestParams
-    ): Promise<StrategyLogTypes.StrategyLogGetSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyLogTypes.StrategyLogResponseBodyDataInstance>
+    > {
         const response =
             await axios.get<StrategyLogTypes.StrategyLogGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
@@ -381,7 +478,11 @@ export class StrategyLogImpl implements StrategyLog {
     }
     async postMany(
         body: StrategyLogTypes.StrategyLogPostManyRequestBody
-    ): Promise<StrategyLogTypes.StrategyLogPostManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyLogTypes.StrategyLogResponseBodyDataInstance[]
+        >
+    > {
         const response =
             await axios.post<StrategyLogTypes.StrategyLogPostManyResponseBody>(
                 `${this.baseUrl}`,
@@ -403,7 +504,9 @@ export class OrderImpl implements Order {
 
     async getMany(
         query: OrderTypes.OrderGetManyRequestQuery
-    ): Promise<OrderTypes.OrderGetManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance[]>
+    > {
         const response = await axios.get<OrderTypes.OrderGetManyResponseBody>(
             `${this.baseUrl}/?${new URLSearchParams(
                 Object.entries(query)
@@ -419,7 +522,7 @@ export class OrderImpl implements Order {
     }
     async getSingle(
         params: OrderTypes.OrderGetSingleRequestParams
-    ): Promise<OrderTypes.OrderGetSingleResponseBody> {
+    ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance>> {
         const response = await axios.get<OrderTypes.OrderGetSingleResponseBody>(
             `${this.baseUrl}/${params.id}`
         );
@@ -433,7 +536,9 @@ export class OrderImpl implements Order {
     }
     async postMany(
         body: OrderTypes.OrderPostManyRequestBody
-    ): Promise<OrderTypes.OrderPostManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance[]>
+    > {
         const response = await axios.post<OrderTypes.OrderPostManyResponseBody>(
             `${this.baseUrl}`,
             body
@@ -448,20 +553,26 @@ export class OrderImpl implements Order {
     }
     async fillSingle(
         params: OrderTypes.OrderFillPostSingleRequestParams
-    ): Promise<OrderTypes.OrderFillPostSingleResponseBody> {
+    ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance>> {
         const response =
             await axios.post<OrderTypes.OrderFillPostSingleResponseBody>(
                 `${this.baseUrl}/${params.id}/fill`
             );
+        if (response.data.status !== 'success') {
+            throw new ClientResponseError(response.data.message);
+        }
         return response.data;
     }
     async cancelSingle(
         params: OrderTypes.OrderCancelPostSingleRequestParams
-    ): Promise<OrderTypes.OrderCancelPostSingleResponseBody> {
+    ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance>> {
         const response =
             await axios.post<OrderTypes.OrderCancelPostSingleResponseBody>(
                 `${this.baseUrl}/${params.id}/cancel`
             );
+        if (response.data.status !== 'success') {
+            throw new ClientResponseError(response.data.message);
+        }
         return response.data;
     }
 }
@@ -471,7 +582,9 @@ export class PositionImpl implements Position {
 
     async getMany(
         query: PositionTypes.PositionGetManyRequestQuery
-    ): Promise<PositionTypes.PositionGetManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<PositionTypes.PositionResponseBodyDataInstance[]>
+    > {
         const response =
             await axios.get<PositionTypes.PositionGetManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
@@ -488,7 +601,9 @@ export class PositionImpl implements Position {
     }
     async getSingle(
         params: PositionTypes.PositionGetSingleRequestParams
-    ): Promise<PositionTypes.PositionGetSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<PositionTypes.PositionResponseBodyDataInstance>
+    > {
         const response =
             await axios.get<PositionTypes.PositionGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
@@ -503,7 +618,9 @@ export class PositionImpl implements Position {
     }
     async postMany(
         body: PositionTypes.PositionPostManyRequestBody
-    ): Promise<PositionTypes.PositionPostManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<PositionTypes.PositionResponseBodyDataInstance[]>
+    > {
         const response =
             await axios.post<PositionTypes.PositionPostManyResponseBody>(
                 `${this.baseUrl}`,
@@ -526,7 +643,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
 
     async getMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyRequestQuery
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
+        >
+    > {
         const response =
             await axios.get<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
@@ -544,7 +665,9 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     }
     async getSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleRequestParams
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
+    > {
         const response =
             await axios.get<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
@@ -560,7 +683,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     }
     async postMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
+        >
+    > {
         const response =
             await axios.post<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBody>(
                 `${this.baseUrl}`,
@@ -577,7 +704,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     }
     async putMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
+        >
+    > {
         const response =
             await axios.put<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBody>(
                 `${this.baseUrl}`,
@@ -595,7 +726,9 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     async putSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleRequestParams,
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
+    > {
         const response =
             await axios.put<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`,
@@ -612,7 +745,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     }
     async patchMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
+        >
+    > {
         const response =
             await axios.patch<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBody>(
                 `${this.baseUrl}`,
@@ -630,7 +767,9 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     async patchSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleRequestParams,
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleRequestBody
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
+    > {
         const response =
             await axios.patch<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`,
@@ -647,7 +786,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     }
     async deleteMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyRequestQuery
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
+        >
+    > {
         const response =
             await axios.delete<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody>(
                 `${this.baseUrl}/?${new URLSearchParams(
@@ -665,7 +808,9 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     }
     async deleteSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleRequestParams
-    ): Promise<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBody> {
+    ): Promise<
+        ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
+    > {
         const response =
             await axios.delete<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBody>(
                 `${this.baseUrl}/${params.id}`
