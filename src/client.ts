@@ -6,7 +6,10 @@ import {
     Position as PositionTypes,
     StrategyTemplateSeaDogDiscountScheme as StrategyTemplateSeaDogDiscountSchemeTypes,
 } from '@umerx/umerx-blackdog-configurator-types-typescript';
-import { ResponseBaseSuccess } from '@umerx/umerx-blackdog-configurator-types-typescript/build/src/response.js';
+import {
+    ResponseBaseSuccess,
+    ResponseBaseSuccessPaginated,
+} from '@umerx/umerx-blackdog-configurator-types-typescript/build/src/response.js';
 import axios from 'axios';
 
 export class ClientResponseError extends Error {
@@ -85,7 +88,7 @@ export interface StrategyLog {
     getMany(
         query: StrategyLogTypes.StrategyLogGetManyRequestQuery
     ): Promise<
-        ResponseBaseSuccess<
+        ResponseBaseSuccessPaginated<
             StrategyLogTypes.StrategyLogResponseBodyDataInstance[]
         >
     >;
@@ -440,7 +443,7 @@ export class StrategyLogImpl implements StrategyLog {
     async getMany(
         query: StrategyLogTypes.StrategyLogGetManyRequestQuery
     ): Promise<
-        ResponseBaseSuccess<
+        ResponseBaseSuccessPaginated<
             StrategyLogTypes.StrategyLogResponseBodyDataInstance[]
         >
     > {
