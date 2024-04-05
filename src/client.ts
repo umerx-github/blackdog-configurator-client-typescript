@@ -82,6 +82,11 @@ export interface Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
     >;
+    getAssetsSingle(
+        params: StrategyTypes.StrategyAssetsGetSingleRequestParams
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyAssetsGetSingleResponseBodyDataInstance>
+    >;
 }
 
 export interface StrategyLog {
@@ -428,6 +433,24 @@ export class StrategyImpl implements Strategy {
             );
         const responseBody =
             StrategyTypes.StrategyDeleteSingleResponseBodyFromRaw(
+                response.data
+            );
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
+        }
+        return responseBody;
+    }
+    async getAssetsSingle(
+        params: StrategyTypes.StrategyAssetsGetSingleRequestParams
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyAssetsGetSingleResponseBodyDataInstance>
+    > {
+        const response =
+            await axios.get<StrategyTypes.StrategyAssetsGetSingleResponseBody>(
+                `${this.baseUrl}/${params.id}/assets`
+            );
+        const responseBody =
+            StrategyTypes.StrategyAssetsGetSingleResponseBodyFromRaw(
                 response.data
             );
         if (responseBody.status !== 'success') {
