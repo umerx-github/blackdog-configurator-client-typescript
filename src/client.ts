@@ -2,6 +2,7 @@ import {
     Symbol as SymbolTypes,
     Strategy as StrategyTypes,
     StrategyLog as StrategyLogTypes,
+    StrategyValue as StrategyValueTypes,
     Order as OrderTypes,
     Position as PositionTypes,
     StrategyTemplateSeaDogDiscountScheme as StrategyTemplateSeaDogDiscountSchemeTypes,
@@ -111,6 +112,28 @@ export interface StrategyLog {
     >;
 }
 
+export interface StrategyValue {
+    getMany(
+        query: StrategyValueTypes.StrategyValueGetManyRequestQuery
+    ): Promise<
+        ResponseBaseSuccessPaginated<
+            StrategyValueTypes.StrategyValueResponseBodyDataInstance[]
+        >
+    >;
+    getSingle(
+        params: StrategyValueTypes.StrategyValueGetSingleRequestParams
+    ): Promise<
+        ResponseBaseSuccess<StrategyValueTypes.StrategyValueResponseBodyDataInstance>
+    >;
+    postMany(
+        body: StrategyValueTypes.StrategyValuePostManyRequestBody
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyValueTypes.StrategyValueResponseBodyDataInstance[]
+        >
+    >;
+}
+
 export interface Order {
     getMany(
         query: OrderTypes.OrderGetManyRequestQuery
@@ -211,6 +234,7 @@ export interface Client {
     symbol(): Symbol;
     strategy(): Strategy;
     strategyLog(): StrategyLog;
+    strategyValue(): StrategyValue;
     order(): Order;
     position(): Position;
     strategyTemplateSeaDogDiscountScheme(): StrategyTemplateSeaDogDiscountScheme;
@@ -517,6 +541,72 @@ export class StrategyLogImpl implements StrategyLog {
             );
         const responseBody =
             StrategyLogTypes.StrategyLogPostManyResponseBodyFromRaw(
+                response.data
+            );
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
+        }
+        return responseBody;
+    }
+}
+
+export class StrategyValueImpl implements StrategyValue {
+    constructor(public readonly baseUrl: string) {}
+
+    async getMany(
+        query: StrategyValueTypes.StrategyValueGetManyRequestQuery
+    ): Promise<
+        ResponseBaseSuccessPaginated<
+            StrategyValueTypes.StrategyValueResponseBodyDataInstance[]
+        >
+    > {
+        const response =
+            await axios.get<StrategyValueTypes.StrategyValueGetManyResponseBody>(
+                `${this.baseUrl}/?${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
+            );
+        const responseBody =
+            StrategyValueTypes.StrategyValueGetManyResponseBodyFromRaw(
+                response.data
+            );
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
+        }
+        return responseBody;
+    }
+    async getSingle(
+        params: StrategyValueTypes.StrategyValueGetSingleRequestParams
+    ): Promise<
+        ResponseBaseSuccess<StrategyValueTypes.StrategyValueResponseBodyDataInstance>
+    > {
+        const response =
+            await axios.get<StrategyValueTypes.StrategyValueGetSingleResponseBody>(
+                `${this.baseUrl}/${params.id}`
+            );
+        const responseBody =
+            StrategyValueTypes.StrategyValueGetSingleResponseBodyFromRaw(
+                response.data
+            );
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
+        }
+        return responseBody;
+    }
+    async postMany(
+        body: StrategyValueTypes.StrategyValuePostManyRequestBody
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyValueTypes.StrategyValueResponseBodyDataInstance[]
+        >
+    > {
+        const response =
+            await axios.post<StrategyValueTypes.StrategyValuePostManyResponseBody>(
+                `${this.baseUrl}`,
+                body
+            );
+        const responseBody =
+            StrategyValueTypes.StrategyValuePostManyResponseBodyFromRaw(
                 response.data
             );
         if (responseBody.status !== 'success') {
@@ -867,6 +957,9 @@ export class ClientImpl implements Client {
     }
     strategyLog(): StrategyLog {
         return new StrategyLogImpl(`${this.baseUrl}/strategyLog`);
+    }
+    strategyValue(): StrategyValue {
+        return new StrategyValueImpl(`${this.baseUrl}/strategyValue`)
     }
     order(): Order {
         return new OrderImpl(`${this.baseUrl}/order`);
