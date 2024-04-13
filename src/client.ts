@@ -87,7 +87,12 @@ export interface Strategy {
         params: StrategyTypes.StrategyAssetsGetSingleRequestParams
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyAssetsGetSingleResponseBodyDataInstance>
-    >;
+        >;
+    getAggregateValues(
+        params: StrategyTypes.StrategyAggregateValuesGetManyRequestParams,
+        query: StrategyTypes.StrategyAggregateValuesGetManyRequestQuery,
+    ): Promise<
+        ResponseBaseSuccess<StrategyTypes.StrategyAggregateValuesGetManyResponseBodyDataInstance[]>>;
 }
 
 export interface StrategyLog {
@@ -477,6 +482,19 @@ export class StrategyImpl implements Strategy {
             StrategyTypes.StrategyAssetsGetSingleResponseBodyFromRaw(
                 response.data
             );
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
+        }
+        return responseBody;
+    }
+    async getAggregateValues(params: StrategyTypes.StrategyAggregateValuesGetManyRequestParams, query: StrategyTypes.StrategyAggregateValuesGetManyRequestQuery): Promise<ResponseBaseSuccess<StrategyTypes.StrategyAggregateValuesGetManyResponseBodyDataInstance[]>> {
+        const response =
+        await axios.get<StrategyTypes.StrategyAggregateValuesGetManyResponseBody>(
+            `${this.baseUrl}/${params.id}/aggregateValues?${new URLSearchParams(
+                Object.entries(query)
+            ).toString()}`
+            );
+        const responseBody = StrategyTypes.StrategyAggregateValuesGetManyResponseBodyFromRaw(response.data);
         if (responseBody.status !== 'success') {
             throw new ClientResponseError(responseBody.message);
         }
