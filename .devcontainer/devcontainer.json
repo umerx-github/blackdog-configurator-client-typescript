@@ -126,7 +126,8 @@
 				"stylelint.vscode-stylelint",
 				"svipas.prettier-plus",
 				"timonwong.shellcheck",
-				"yzhang.markdown-all-in-one"
+				"yzhang.markdown-all-in-one",
+				"gruntfuggly.todo-tree"
 			]
 		}
 	}
