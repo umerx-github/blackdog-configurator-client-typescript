@@ -87,12 +87,15 @@ export interface Strategy {
         params: StrategyTypes.StrategyAssetsGetSingleRequestParams
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyAssetsGetSingleResponseBodyDataInstance>
-        >;
+    >;
     getAggregateValues(
         params: StrategyTypes.StrategyAggregateValuesGetManyRequestParams,
-        query: StrategyTypes.StrategyAggregateValuesGetManyRequestQuery,
+        query: StrategyTypes.StrategyAggregateValuesGetManyRequestQuery
     ): Promise<
-        ResponseBaseSuccess<StrategyTypes.StrategyAggregateValuesGetManyResponseBodyDataInstance[]>>;
+        ResponseBaseSuccess<
+            StrategyTypes.StrategyAggregateValuesGetManyResponseBodyDataInstance[]
+        >
+    >;
 }
 
 export interface StrategyLog {
@@ -487,14 +490,26 @@ export class StrategyImpl implements Strategy {
         }
         return responseBody;
     }
-    async getAggregateValues(params: StrategyTypes.StrategyAggregateValuesGetManyRequestParams, query: StrategyTypes.StrategyAggregateValuesGetManyRequestQuery): Promise<ResponseBaseSuccess<StrategyTypes.StrategyAggregateValuesGetManyResponseBodyDataInstance[]>> {
+    async getAggregateValues(
+        params: StrategyTypes.StrategyAggregateValuesGetManyRequestParams,
+        query: StrategyTypes.StrategyAggregateValuesGetManyRequestQuery
+    ): Promise<
+        ResponseBaseSuccess<
+            StrategyTypes.StrategyAggregateValuesGetManyResponseBodyDataInstance[]
+        >
+    > {
         const response =
-        await axios.get<StrategyTypes.StrategyAggregateValuesGetManyResponseBody>(
-            `${this.baseUrl}/${params.id}/aggregateValues?${new URLSearchParams(
-                Object.entries(query)
-            ).toString()}`
+            await axios.get<StrategyTypes.StrategyAggregateValuesGetManyResponseBody>(
+                `${this.baseUrl}/${
+                    params.id
+                }/aggregateValues?${new URLSearchParams(
+                    Object.entries(query)
+                ).toString()}`
             );
-        const responseBody = StrategyTypes.StrategyAggregateValuesGetManyResponseBodyFromRaw(response.data);
+        const responseBody =
+            StrategyTypes.StrategyAggregateValuesGetManyResponseBodyFromRaw(
+                response.data
+            );
         if (responseBody.status !== 'success') {
             throw new ClientResponseError(responseBody.message);
         }
@@ -693,10 +708,13 @@ export class OrderImpl implements Order {
             await axios.post<OrderTypes.OrderFillPostSingleResponseBody>(
                 `${this.baseUrl}/${params.id}/fill`
             );
-        if (response.data.status !== 'success') {
-            throw new ClientResponseError(response.data.message);
+        const responseBody = OrderTypes.OrderFillPostSingleResponseBodyFromRow(
+            response.data
+        );
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return response.data;
+        return responseBody;
     }
     async cancelSingle(
         params: OrderTypes.OrderCancelPostSingleRequestParams
@@ -705,10 +723,12 @@ export class OrderImpl implements Order {
             await axios.post<OrderTypes.OrderCancelPostSingleResponseBody>(
                 `${this.baseUrl}/${params.id}/cancel`
             );
-        if (response.data.status !== 'success') {
-            throw new ClientResponseError(response.data.message);
+        const responseBody =
+            OrderTypes.OrderCancelPostSingleResponseBodyFromRow(response.data);
+        if (responseBody.status !== 'success') {
+            throw new ClientResponseError(responseBody.message);
         }
-        return response.data;
+        return responseBody;
     }
 }
 
@@ -977,7 +997,7 @@ export class ClientImpl implements Client {
         return new StrategyLogImpl(`${this.baseUrl}/strategyLog`);
     }
     strategyValue(): StrategyValue {
-        return new StrategyValueImpl(`${this.baseUrl}/strategyValue`)
+        return new StrategyValueImpl(`${this.baseUrl}/strategyValue`);
     }
     order(): Order {
         return new OrderImpl(`${this.baseUrl}/order`);
