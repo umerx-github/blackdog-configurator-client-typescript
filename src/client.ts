@@ -29,6 +29,29 @@ export class ClientResponseError extends Error {
         this.responseBody = responseBody;
     }
 }
+
+async function handleResponseErrors<T>(func: () => Promise<T>): Promise<T> {
+    try {
+        return await func();
+    } catch (e) {
+        if (e instanceof AxiosError && undefined !== e?.status) {
+            try {
+                const errorResponse = ResponseTypes.ResponseBaseErrorFromRaw(
+                    e?.response?.data
+                );
+                throw new ClientResponseError(
+                    errorResponse.message,
+                    e.status,
+                    errorResponse
+                );
+            } catch (e2) {
+                throw e;
+            }
+        }
+        throw e;
+    }
+}
+
 export interface Symbol {
     getMany(
         query: SymbolTypes.SymbolGetManyRequestQuery
@@ -266,7 +289,7 @@ export class SymbolImpl implements Symbol {
     ): Promise<
         ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance[]>
     > {
-        try {
+        return handleResponseErrors(async () => {
             const response =
                 await axios.get<SymbolTypes.SymbolGetManyResponseBody>(
                     `${this.baseUrl}/?${new URLSearchParams(
@@ -284,24 +307,7 @@ export class SymbolImpl implements Symbol {
                 );
             }
             return responseBody;
-        } catch (e) {
-            if (e instanceof AxiosError && undefined !== e?.status) {
-                try {
-                    const errorResponse =
-                        ResponseTypes.ResponseBaseErrorFromRaw(
-                            e?.response?.data
-                        );
-                    throw new ClientResponseError(
-                        errorResponse.message,
-                        e.status,
-                        errorResponse
-                    );
-                } catch (e2) {
-                    throw e;
-                }
-            }
-            throw e;
-        }
+        });
     }
     async getSingle(
         params: SymbolTypes.SymbolGetSingleRequestParams
@@ -356,23 +362,24 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
     > {
-        const response =
-            await axios.get<StrategyTypes.StrategyGetManyResponseBody>(
-                `${this.baseUrl}/?${new URLSearchParams(
-                    Object.entries(query)
-                ).toString()}`
-            );
-        const responseBody = StrategyTypes.StrategyGetManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseBody.status !== 'success') {
-            throw new ClientResponseError(
-                responseBody.message,
-                response.status,
-                responseBody
-            );
-        }
-        return responseBody;
+        return handleResponseErrors(async () => {
+            const response =
+                await axios.get<StrategyTypes.StrategyGetManyResponseBody>(
+                    `${this.baseUrl}/?${new URLSearchParams(
+                        Object.entries(query)
+                    ).toString()}`
+                );
+            const responseBody =
+                StrategyTypes.StrategyGetManyResponseBodyFromRaw(response.data);
+            if (responseBody.status !== 'success') {
+                throw new ClientResponseError(
+                    responseBody.message,
+                    response.status,
+                    responseBody
+                );
+            }
+            return responseBody;
+        });
     }
     async getSingle(
         params: StrategyTypes.StrategyGetSingleRequestParams
