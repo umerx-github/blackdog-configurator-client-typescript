@@ -35,21 +35,14 @@ async function handleResponseErrors<T>(func: () => Promise<T>): Promise<T> {
         return await func();
     } catch (e) {
         if (e instanceof AxiosError && undefined !== e?.response?.status) {
-            try {
-                const errorResponse = ResponseTypes.ResponseBaseErrorFromRaw(
-                    e?.response?.data
-                );
-                throw new ClientResponseError(
-                    errorResponse.message,
-                    e?.response?.status,
-                    errorResponse
-                );
-            } catch (e2) {
-                if (e2 instanceof ClientResponseError) {
-                    throw e2;
-                }
-                throw e;
-            }
+            const errorResponse = ResponseTypes.ResponseBaseErrorFromRaw(
+                e?.response?.data
+            );
+            e = new ClientResponseError(
+                errorResponse.message,
+                e?.response?.status,
+                errorResponse
+            );
         }
         throw e;
     }
