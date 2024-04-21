@@ -8,15 +8,24 @@ import {
     StrategyTemplateSeaDogDiscountScheme as StrategyTemplateSeaDogDiscountSchemeTypes,
 } from '@umerx/umerx-blackdog-configurator-types-typescript';
 import {
+    ResponseBaseError,
     ResponseBaseSuccess,
     ResponseBaseSuccessPaginated,
 } from '@umerx/umerx-blackdog-configurator-types-typescript/build/src/response.js';
 import axios from 'axios';
 
 export class ClientResponseError extends Error {
-    constructor(message: string) {
+    statusCode: number;
+    responseBody: ResponseBaseError;
+    constructor(
+        message: string,
+        statusCode: number,
+        responseBody: ResponseBaseError
+    ) {
         super(message);
         this.name = 'ClientResponseError';
+        this.statusCode = statusCode;
+        this.responseBody = responseBody;
     }
 }
 export interface Symbol {
@@ -265,7 +274,11 @@ export class SymbolImpl implements Symbol {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -282,7 +295,11 @@ export class SymbolImpl implements Symbol {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -300,7 +317,11 @@ export class SymbolImpl implements Symbol {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -324,7 +345,11 @@ export class StrategyImpl implements Strategy {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -341,7 +366,11 @@ export class StrategyImpl implements Strategy {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -359,7 +388,11 @@ export class StrategyImpl implements Strategy {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -377,7 +410,11 @@ export class StrategyImpl implements Strategy {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -396,7 +433,11 @@ export class StrategyImpl implements Strategy {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -414,7 +455,11 @@ export class StrategyImpl implements Strategy {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -432,7 +477,11 @@ export class StrategyImpl implements Strategy {
         const responseBody =
             StrategyTypes.StrategyPatchSingleResponseBodyFromRaw(response.data);
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -450,7 +499,11 @@ export class StrategyImpl implements Strategy {
         const responseBody =
             StrategyTypes.StrategyDeleteManyResponseBodyFromRaw(response.data);
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -468,7 +521,11 @@ export class StrategyImpl implements Strategy {
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -486,7 +543,11 @@ export class StrategyImpl implements Strategy {
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -511,7 +572,11 @@ export class StrategyImpl implements Strategy {
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -538,7 +603,11 @@ export class StrategyLogImpl implements StrategyLog {
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -556,7 +625,11 @@ export class StrategyLogImpl implements StrategyLog {
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -577,7 +650,11 @@ export class StrategyLogImpl implements StrategyLog {
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -604,7 +681,11 @@ export class StrategyValueImpl implements StrategyValue {
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -622,7 +703,11 @@ export class StrategyValueImpl implements StrategyValue {
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -643,7 +728,11 @@ export class StrategyValueImpl implements StrategyValue {
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -666,7 +755,11 @@ export class OrderImpl implements Order {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -680,7 +773,11 @@ export class OrderImpl implements Order {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -697,7 +794,11 @@ export class OrderImpl implements Order {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -712,7 +813,11 @@ export class OrderImpl implements Order {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -726,7 +831,11 @@ export class OrderImpl implements Order {
         const responseBody =
             OrderTypes.OrderCancelPostSingleResponseBodyFromRow(response.data);
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -750,7 +859,11 @@ export class PositionImpl implements Position {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -767,7 +880,11 @@ export class PositionImpl implements Position {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -785,7 +902,11 @@ export class PositionImpl implements Position {
             response.data
         );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -814,7 +935,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -832,7 +957,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -853,7 +982,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -874,7 +1007,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -894,7 +1031,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -915,7 +1056,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -935,7 +1080,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -957,7 +1106,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
@@ -975,7 +1128,11 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 response.data
             );
         if (responseBody.status !== 'success') {
-            throw new ClientResponseError(responseBody.message);
+            throw new ClientResponseError(
+                responseBody.message,
+                response.status,
+                responseBody
+            );
         }
         return responseBody;
     }
