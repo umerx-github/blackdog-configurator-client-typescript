@@ -1,4 +1,5 @@
 import {
+    Response as ResponseTypes,
     Symbol as SymbolTypes,
     Strategy as StrategyTypes,
     StrategyLog as StrategyLogTypes,
@@ -12,7 +13,7 @@ import {
     ResponseBaseSuccess,
     ResponseBaseSuccessPaginated,
 } from '@umerx/umerx-blackdog-configurator-types-typescript/build/src/response.js';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 export class ClientResponseError extends Error {
     statusCode: number;
@@ -265,22 +266,42 @@ export class SymbolImpl implements Symbol {
     ): Promise<
         ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance[]>
     > {
-        const response = await axios.get<SymbolTypes.SymbolGetManyResponseBody>(
-            `${this.baseUrl}/?${new URLSearchParams(
-                Object.entries(query)
-            ).toString()}`
-        );
-        const responseBody = SymbolTypes.SymbolGetManyResponseBodyFromRaw(
-            response.data
-        );
-        if (responseBody.status !== 'success') {
-            throw new ClientResponseError(
-                responseBody.message,
-                response.status,
-                responseBody
+        try {
+            const response =
+                await axios.get<SymbolTypes.SymbolGetManyResponseBody>(
+                    `${this.baseUrl}/?${new URLSearchParams(
+                        Object.entries(query)
+                    ).toString()}`
+                );
+            const responseBody = SymbolTypes.SymbolGetManyResponseBodyFromRaw(
+                response.data
             );
+            if (responseBody.status !== 'success') {
+                throw new ClientResponseError(
+                    responseBody.message,
+                    response.status,
+                    responseBody
+                );
+            }
+            return responseBody;
+        } catch (e) {
+            if (e instanceof AxiosError && undefined !== e?.status) {
+                try {
+                    const errorResponse =
+                        ResponseTypes.ResponseBaseErrorFromRaw(
+                            e?.response?.data
+                        );
+                    throw new ClientResponseError(
+                        errorResponse.message,
+                        e.status,
+                        errorResponse
+                    );
+                } catch (e2) {
+                    throw e;
+                }
+            }
+            throw e;
         }
-        return responseBody;
     }
     async getSingle(
         params: SymbolTypes.SymbolGetSingleRequestParams
