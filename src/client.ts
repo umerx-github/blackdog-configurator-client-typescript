@@ -45,6 +45,9 @@ async function handleResponseErrors<T>(func: () => Promise<T>): Promise<T> {
                     errorResponse
                 );
             } catch (e2) {
+                if (e2 instanceof ClientResponseError) {
+                    throw e2;
+                }
                 throw e;
             }
         }
