@@ -833,7 +833,7 @@ export class OrderImpl implements Order {
             await axios.post<OrderTypes.OrderFillPostSingleResponseBody>(
                 `${this.baseUrl}/${params.id}/fill`
             );
-        const responseBody = OrderTypes.OrderFillPostSingleResponseBodyFromRow(
+        const responseBody = OrderTypes.OrderFillPostSingleResponseBodyFromRaw(
             response.data
         );
         if (responseBody.status !== 'success') {
@@ -853,7 +853,7 @@ export class OrderImpl implements Order {
                 `${this.baseUrl}/${params.id}/cancel`
             );
         const responseBody =
-            OrderTypes.OrderCancelPostSingleResponseBodyFromRow(response.data);
+            OrderTypes.OrderCancelPostSingleResponseBodyFromRaw(response.data);
         if (responseBody.status !== 'success') {
             throw new ClientResponseError(
                 responseBody.message,
