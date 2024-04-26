@@ -30,7 +30,7 @@ export class ClientResponseError extends Error {
     }
 }
 
-async function handleResponseErrors<T>(func: () => Promise<T>): Promise<T> {
+async function validateResponse<T>(func: () => Promise<T>): Promise<T> {
     try {
         return await func();
     } catch (e) {
@@ -285,7 +285,7 @@ export class SymbolImpl implements Symbol {
     ): Promise<
         ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<SymbolTypes.SymbolGetManyResponseBody>(
                     `${this.baseUrl}/?${new URLSearchParams(
@@ -310,7 +310,7 @@ export class SymbolImpl implements Symbol {
     ): Promise<
         ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<SymbolTypes.SymbolGetSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`
@@ -333,7 +333,7 @@ export class SymbolImpl implements Symbol {
     ): Promise<
         ResponseBaseSuccess<SymbolTypes.SymbolResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.post<SymbolTypes.SymbolPostManyResponseBody>(
                     `${this.baseUrl}`,
@@ -362,7 +362,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<StrategyTypes.StrategyGetManyResponseBody>(
                     `${this.baseUrl}/?${new URLSearchParams(
@@ -386,7 +386,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<StrategyTypes.StrategyGetSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`
@@ -410,7 +410,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.post<StrategyTypes.StrategyPostManyResponseBody>(
                     `${this.baseUrl}`,
@@ -435,7 +435,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.put<StrategyTypes.StrategyPutManyResponseBody>(
                     `${this.baseUrl}`,
@@ -459,7 +459,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.put<StrategyTypes.StrategyPutSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`,
@@ -484,7 +484,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.patch<StrategyTypes.StrategyPatchManyResponseBody>(
                     `${this.baseUrl}`,
@@ -510,7 +510,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.patch<StrategyTypes.StrategyPatchSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`,
@@ -535,7 +535,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.delete<StrategyTypes.StrategyDeleteManyResponseBody>(
                     `${this.baseUrl}/?${new URLSearchParams(
@@ -561,7 +561,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.delete<StrategyTypes.StrategyDeleteSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`
@@ -585,7 +585,7 @@ export class StrategyImpl implements Strategy {
     ): Promise<
         ResponseBaseSuccess<StrategyTypes.StrategyAssetsGetSingleResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<StrategyTypes.StrategyAssetsGetSingleResponseBody>(
                     `${this.baseUrl}/${params.id}/assets`
@@ -612,7 +612,7 @@ export class StrategyImpl implements Strategy {
             StrategyTypes.StrategyAggregateValuesGetManyResponseBodyDataInstance[]
         >
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<StrategyTypes.StrategyAggregateValuesGetManyResponseBody>(
                     `${this.baseUrl}/${
@@ -647,7 +647,7 @@ export class StrategyLogImpl implements StrategyLog {
             StrategyLogTypes.StrategyLogResponseBodyDataInstance[]
         >
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<StrategyLogTypes.StrategyLogGetManyResponseBody>(
                     `${this.baseUrl}/?${new URLSearchParams(
@@ -673,7 +673,7 @@ export class StrategyLogImpl implements StrategyLog {
     ): Promise<
         ResponseBaseSuccess<StrategyLogTypes.StrategyLogResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<StrategyLogTypes.StrategyLogGetSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`
@@ -699,7 +699,7 @@ export class StrategyLogImpl implements StrategyLog {
             StrategyLogTypes.StrategyLogResponseBodyDataInstance[]
         >
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.post<StrategyLogTypes.StrategyLogPostManyResponseBody>(
                     `${this.baseUrl}`,
@@ -731,7 +731,7 @@ export class StrategyValueImpl implements StrategyValue {
             StrategyValueTypes.StrategyValueResponseBodyDataInstance[]
         >
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<StrategyValueTypes.StrategyValueGetManyResponseBody>(
                     `${this.baseUrl}/?${new URLSearchParams(
@@ -757,7 +757,7 @@ export class StrategyValueImpl implements StrategyValue {
     ): Promise<
         ResponseBaseSuccess<StrategyValueTypes.StrategyValueResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<StrategyValueTypes.StrategyValueGetSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`
@@ -783,7 +783,7 @@ export class StrategyValueImpl implements StrategyValue {
             StrategyValueTypes.StrategyValueResponseBodyDataInstance[]
         >
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.post<StrategyValueTypes.StrategyValuePostManyResponseBody>(
                     `${this.baseUrl}`,
@@ -813,7 +813,7 @@ export class OrderImpl implements Order {
     ): Promise<
         ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<OrderTypes.OrderGetManyResponseBody>(
                     `${this.baseUrl}/?${new URLSearchParams(
@@ -836,7 +836,7 @@ export class OrderImpl implements Order {
     async getSingle(
         params: OrderTypes.OrderGetSingleRequestParams
     ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance>> {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<OrderTypes.OrderGetSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`
@@ -859,7 +859,7 @@ export class OrderImpl implements Order {
     ): Promise<
         ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.post<OrderTypes.OrderPostManyResponseBody>(
                     `${this.baseUrl}`,
@@ -881,7 +881,7 @@ export class OrderImpl implements Order {
     async fillSingle(
         params: OrderTypes.OrderFillPostSingleRequestParams
     ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance>> {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.post<OrderTypes.OrderFillPostSingleResponseBody>(
                     `${this.baseUrl}/${params.id}/fill`
@@ -903,7 +903,7 @@ export class OrderImpl implements Order {
     async cancelSingle(
         params: OrderTypes.OrderCancelPostSingleRequestParams
     ): Promise<ResponseBaseSuccess<OrderTypes.OrderResponseBodyDataInstance>> {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.post<OrderTypes.OrderCancelPostSingleResponseBody>(
                     `${this.baseUrl}/${params.id}/cancel`
@@ -932,7 +932,7 @@ export class PositionImpl implements Position {
     ): Promise<
         ResponseBaseSuccess<PositionTypes.PositionResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<PositionTypes.PositionGetManyResponseBody>(
                     `${this.baseUrl}/?${new URLSearchParams(
@@ -956,14 +956,15 @@ export class PositionImpl implements Position {
     ): Promise<
         ResponseBaseSuccess<PositionTypes.PositionResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<PositionTypes.PositionGetSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`
                 );
-            const responseBody = PositionTypes.PositionGetSingleResponseBodyFromRaw(
-                response.data
-            );
+            const responseBody =
+                PositionTypes.PositionGetSingleResponseBodyFromRaw(
+                    response.data
+                );
             if (responseBody.status !== 'success') {
                 throw new ClientResponseError(
                     responseBody.message,
@@ -972,22 +973,23 @@ export class PositionImpl implements Position {
                 );
             }
             return responseBody;
-        })
+        });
     }
     async postMany(
         body: PositionTypes.PositionPostManyRequestBody
     ): Promise<
         ResponseBaseSuccess<PositionTypes.PositionResponseBodyDataInstance[]>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.post<PositionTypes.PositionPostManyResponseBody>(
                     `${this.baseUrl}`,
                     body
                 );
-            const responseBody = PositionTypes.PositionPostManyResponseBodyFromRaw(
-                response.data
-            );
+            const responseBody =
+                PositionTypes.PositionPostManyResponseBodyFromRaw(
+                    response.data
+                );
             if (responseBody.status !== 'success') {
                 throw new ClientResponseError(
                     responseBody.message,
@@ -996,7 +998,7 @@ export class PositionImpl implements Position {
                 );
             }
             return responseBody;
-        })
+        });
     }
 }
 
@@ -1012,7 +1014,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
         >
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetManyResponseBody>(
                     `${this.baseUrl}/?${new URLSearchParams(
@@ -1031,14 +1033,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 );
             }
             return responseBody;
-        })
+        });
     }
     async getSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleRequestParams
     ): Promise<
         ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.get<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeGetSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`
@@ -1055,7 +1057,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 );
             }
             return responseBody;
-        })
+        });
     }
     async postMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
@@ -1064,7 +1066,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
         >
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.post<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyResponseBody>(
                     `${this.baseUrl}`,
@@ -1082,7 +1084,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 );
             }
             return responseBody;
-        })
+        });
     }
     async putMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePostManyRequestBody
@@ -1091,7 +1093,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
         >
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.put<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutManyResponseBody>(
                     `${this.baseUrl}`,
@@ -1109,7 +1111,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 );
             }
             return responseBody;
-        })
+        });
     }
     async putSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleRequestParams,
@@ -1117,7 +1119,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<
         ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.put<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePutSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`,
@@ -1135,7 +1137,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 );
             }
             return responseBody;
-        })
+        });
     }
     async patchMany(
         body: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyRequestBody
@@ -1144,7 +1146,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
         >
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.patch<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchManyResponseBody>(
                     `${this.baseUrl}`,
@@ -1162,7 +1164,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 );
             }
             return responseBody;
-        })
+        });
     }
     async patchSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleRequestParams,
@@ -1170,7 +1172,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
     ): Promise<
         ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.patch<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemePatchSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`,
@@ -1188,7 +1190,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 );
             }
             return responseBody;
-        })
+        });
     }
     async deleteMany(
         query: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyRequestQuery
@@ -1197,7 +1199,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
             StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance[]
         >
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.delete<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteManyResponseBody>(
                     `${this.baseUrl}/?${new URLSearchParams(
@@ -1216,14 +1218,14 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 );
             }
             return responseBody;
-        })
+        });
     }
     async deleteSingle(
         params: StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleRequestParams
     ): Promise<
         ResponseBaseSuccess<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeResponseBodyDataInstance>
     > {
-        return handleResponseErrors(async () => {
+        return validateResponse(async () => {
             const response =
                 await axios.delete<StrategyTemplateSeaDogDiscountSchemeTypes.StrategyTemplateSeaDogDiscountSchemeDeleteSingleResponseBody>(
                     `${this.baseUrl}/${params.id}`
@@ -1240,7 +1242,7 @@ export class StrategyTemplateSeaDogDiscountSchemeImpl
                 );
             }
             return responseBody;
-        })
+        });
     }
 }
 
